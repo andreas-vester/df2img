@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "df2img"
+version = "0.1.0"
+description = "Save a Pandas DataFrame as image"
+authors = ["Andreas Vester <andreas@vester-online.de>"]
+license = "MIT"
+readme = "README.rst"
+repository = "https://github.com/andreas-vester/df2img"
+keywords = ["pandas", "dataframe", "image"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+include = [
+    "CHANGELOG.rst",
+    "LICENSE",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pandas = "^1.3.3"
+matplotlib = "^3.4.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+black = "^21.9b0"
+tox = "^3.24.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
