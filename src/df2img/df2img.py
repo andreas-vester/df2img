@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Optional, List, Literal
+from typing import Optional, List, Literal, Union
 
 import numpy as np
 import pandas as pd
@@ -18,9 +18,9 @@ def df2img(
     header_bgcolor: str = "white",
     row_bgcolors: List[str] = None,
     edge_color: str = "gray",
-    col_width: float = 3.0,
-    row_height: float = 0.625,
-    font_size: float = 14.0,
+    col_width: Union[int, float] = 3.0,
+    row_height: Union[int, float] = 0.625,
+    font_size: Union[int, float] = 14.0,
 ) -> (plt.figure, plt.table):
     """
     Converts a Pandas DataFrame into a matplotlib table and saves it as an
@@ -84,9 +84,9 @@ def df2img(
         row_bgcolors, list
     ), "`row_bgcolors` must be of type `List[str]`."
     assert isinstance(edge_color, str), "`edge_color` must be of type `str`."
-    assert isinstance(col_width, float), "`col_width` must be of type `float`."
-    assert isinstance(row_height, float), "`row_height` must be of type `float`."
-    assert isinstance(font_size, float), "`font_size` must be of type `float`."
+    assert isinstance(col_width, (int, float)), "`col_width` must be of type `float`."
+    assert isinstance(row_height, (int, float)), "`row_height` must be of type `float`."
+    assert isinstance(font_size, (int, float)), "`font_size` must be of type `float`."
 
     if row_bgcolors is None:
         row_bgcolors = ["white"]

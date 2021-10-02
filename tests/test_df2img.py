@@ -28,7 +28,7 @@ def df_with_index():
 
 
 def test_version():
-    assert __version__ == "0.1.0"
+    assert __version__ == "0.1.1"
 
 
 # noinspection PyTypeChecker
@@ -108,6 +108,14 @@ def test_col_width_assertion(df_with_index):
     assert str(err.value) == "`col_width` must be of type `float`."
 
 
+def test_col_width_assertion_float(df_with_index):
+    df2img(df=df_with_index, col_width=5.0)
+
+
+def test_col_width_assertion_int(df_with_index):
+    df2img(df=df_with_index, col_width=5)
+
+
 # noinspection PyTypeChecker
 def test_row_height_assertion(df_with_index):
     with pytest.raises(AssertionError) as err:
@@ -116,12 +124,28 @@ def test_row_height_assertion(df_with_index):
     assert str(err.value) == "`row_height` must be of type `float`."
 
 
+def test_row_height_assertion_float(df_with_index):
+    df2img(df=df_with_index, col_width=1.0)
+
+
+def test_row_height_assertion_int(df_with_index):
+    df2img(df=df_with_index, col_width=1)
+
+
 # noinspection PyTypeChecker
 def test_font_size_assertion(df_with_index):
     with pytest.raises(AssertionError) as err:
         df2img(df=df_with_index, font_size="foo")
 
     assert str(err.value) == "`font_size` must be of type `float`."
+
+
+def test_font_size_assertion_float(df_with_index):
+    df2img(df=df_with_index, col_width=12.0)
+
+
+def test_font_size_assertion_int(df_with_index):
+    df2img(df=df_with_index, col_width=12)
 
 
 def test_original_index_name(df_without_index):

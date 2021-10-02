@@ -2,7 +2,14 @@
 Changelog
 *********
 
-The format is based on `Keep a changelog <https://keepachangelog.com/de/1.0.0/>`_. This project adheres tp `Semantic Versioning <https://semver.org/>`_.
+The format is based on `Keep a changelog <https://keepachangelog.com/de/1.0.0/>`_. This project adheres to `Semantic Versioning <https://semver.org/>`_.
+
+[v0.1.1] - 2021-10-02
+=====================
+
+Fixed
+-----
+- Input arguments ``col_width``, ``row_height``, and ``font_size`` now accept ``int`` (`GitHub issue #1 <https://github.com/andreas-vester/df2img/issues/1>`_).
 
 [v0.1.0] - 2021-09-17
 =====================
