@@ -18,13 +18,14 @@ def df2img(
     header_bgcolor: str = "white",
     row_bgcolors: List[str] = None,
     edge_color: str = "gray",
-    col_width: Union[int, float] = 3.0,
+    # col_width: Union[int, float] = 3.0,
     row_height: Union[int, float] = 0.625,
     font_size: Union[int, float] = 14.0,
+    auto_col_width: bool = True,
 ) -> (plt.figure, plt.table):
     """
     Converts a Pandas DataFrame into a matplotlib table and saves it as an
-    image file (e.g. png or jpy).
+    image file (e.g. png or jpg).
 
     `df.index` will be plotted as the index column. This column's header will be
     equivalent to `df.index.name`. Likewise, `df.columns` will be used for the column
@@ -84,7 +85,7 @@ def df2img(
         row_bgcolors, list
     ), "`row_bgcolors` must be of type `List[str]`."
     assert isinstance(edge_color, str), "`edge_color` must be of type `str`."
-    assert isinstance(col_width, (int, float)), "`col_width` must be of type `float`."
+    # assert isinstance(col_width, (int, float)), "`col_width` must be of type `float`."
     assert isinstance(row_height, (int, float)), "`row_height` must be of type `float`."
     assert isinstance(font_size, (int, float)), "`font_size` must be of type `float`."
 
@@ -96,12 +97,12 @@ def df2img(
     bbox = [0, 0, 1, 1]  # bounding box to draw the table into
 
     # compute image size according to number of rows and columns
-    size = (np.array(df.shape[::-1]) + np.array([0, 1])) * np.array(
-        [col_width, row_height]
-    )
+    # size = (np.array(df.shape[::-1]) + np.array([0, 1])) * np.array(
+    #     [col_width, row_height]
+    # )
 
     # create actual figure
-    fig, ax = plt.subplots(figsize=size)
+    fig, ax = plt.subplots(figsize=(8, 2 + len(df) / 2.5))
     ax.axis("off")  # turn off axis labels
     mpl_table = ax.table(
         cellText=df.values,
@@ -110,6 +111,8 @@ def df2img(
     )
     mpl_table.auto_set_font_size(False)
     mpl_table.set_fontsize(font_size)
+    if auto_col_width:
+        mpl_table.auto_set_column_width(col=list(range(len(df.columns))))
 
     # format header rows and cols and alternate every other row's color
     for k, cell in mpl_table.get_celld().items():  # k returns (row, col) tuple

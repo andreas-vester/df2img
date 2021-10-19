@@ -236,3 +236,9 @@ def test_title(df_with_index):
 
     assert fig.gca().get_title() == "Title text"
     plt.close()
+
+
+def test_auto_col_width(df_with_index):
+    fig, tbl = df2img(df_with_index, title="Test", show_fig=True, auto_col_width=True)
+
+    plt.close()
