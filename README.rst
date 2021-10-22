@@ -23,6 +23,12 @@ You can install the package via ``pip``.
 
     pip install df2img
 
+Using ``poetry``?
+
+.. code-block:: python
+
+    poetry add df2img
+
 Let's create a simple ``pd.DataFrame`` with some dummy data:
 
 .. code-block:: python

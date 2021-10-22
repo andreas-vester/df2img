@@ -282,6 +282,16 @@ def test_not_equal_col_width_if_auto_col_width_true(df_with_index):
     plt.close()
 
 
+def test_len_col_width_list(df_with_index):
+    with pytest.raises(AssertionError) as err:
+        df2img(df=df_with_index, auto_col_width=False, col_width=[4, 3, 2, 1])
+    assert str(err.value) == (
+        f"len(col_width) == 4, while len(df.columns) == "
+        f"{len(df_with_index.columns) + 1}. "
+        f"Please provide a value for every column in your dataframe."
+    )
+
+
 def test_equal_col_width(df_with_index):
     _, tbl = df2img(df=df_with_index, auto_col_width=False, col_width=[1, 1, 1])
 

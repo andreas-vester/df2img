@@ -101,6 +101,12 @@ def df2img(
         assert isinstance(
             col_width, list
         ), "`col_width` must be of a `list` containing `int` or `float`"
+    if col_width is not None:
+        assert len(col_width) == len(df.columns) + 1, (
+            f"len(col_width) == {len(col_width)}, while len(df.columns) == "
+            f"{len(df.columns) + 1}. "
+            f"Please provide a value for every column in your dataframe."
+        )
     assert isinstance(
         row_height, (int, float)
     ), "`row_height` must be of type `int` or `float`."
