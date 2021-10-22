@@ -101,19 +101,41 @@ def test_edge_color_assertion(df_with_index):
 
 
 # noinspection PyTypeChecker
+def test_fig_width_assertion(df_with_index):
+    with pytest.raises(AssertionError) as err:
+        df2img(df=df_with_index, fig_width="3")
+
+    assert str(err.value) == "`fig_width` must be of type `int` or `float`."
+
+
+def test_fig_width_assertion_float(df_with_index):
+    df2img(df=df_with_index, fig_width=5.5)
+
+
+def test_fig_width_assertion_int(df_with_index):
+    df2img(df=df_with_index, fig_width=5)
+
+
+# noinspection PyTypeChecker
 def test_col_width_assertion(df_with_index):
     with pytest.raises(AssertionError) as err:
         df2img(df=df_with_index, col_width="3")
 
-    assert str(err.value) == "`col_width` must be of type `float`."
+    assert (
+        str(err.value) == "`col_width` must be of a `list` containing `int` or `float`"
+    )
 
 
 def test_col_width_assertion_float(df_with_index):
-    df2img(df=df_with_index, col_width=5.0)
+    df2img(df=df_with_index, col_width=[0.25, 0.5, 0.25])
 
 
 def test_col_width_assertion_int(df_with_index):
-    df2img(df=df_with_index, col_width=5)
+    df2img(df=df_with_index, col_width=[1, 2, 3])
+
+
+def test_col_width_assertion_none(df_with_index):
+    df2img(df=df_with_index, col_width=None)
 
 
 # noinspection PyTypeChecker
@@ -121,15 +143,15 @@ def test_row_height_assertion(df_with_index):
     with pytest.raises(AssertionError) as err:
         df2img(df=df_with_index, row_height="foo")
 
-    assert str(err.value) == "`row_height` must be of type `float`."
+    assert str(err.value) == "`row_height` must be of type `int` or `float`."
 
 
 def test_row_height_assertion_float(df_with_index):
-    df2img(df=df_with_index, col_width=1.0)
+    df2img(df=df_with_index, fig_width=0.5)
 
 
 def test_row_height_assertion_int(df_with_index):
-    df2img(df=df_with_index, col_width=1)
+    df2img(df=df_with_index, fig_width=1)
 
 
 # noinspection PyTypeChecker
@@ -137,15 +159,15 @@ def test_font_size_assertion(df_with_index):
     with pytest.raises(AssertionError) as err:
         df2img(df=df_with_index, font_size="foo")
 
-    assert str(err.value) == "`font_size` must be of type `float`."
+    assert str(err.value) == "`font_size` must be of type `int` or `float`."
 
 
 def test_font_size_assertion_float(df_with_index):
-    df2img(df=df_with_index, col_width=12.0)
+    df2img(df=df_with_index, fig_width=12.5)
 
 
 def test_font_size_assertion_int(df_with_index):
-    df2img(df=df_with_index, col_width=12)
+    df2img(df=df_with_index, fig_width=12)
 
 
 def test_original_index_name(df_without_index):
@@ -238,7 +260,52 @@ def test_title(df_with_index):
     plt.close()
 
 
-def test_auto_col_width(df_with_index):
-    fig, tbl = df2img(df_with_index, title="Test", show_fig=True, auto_col_width=True)
+def test_equal_col_width_if_auto_col_width_false(df_with_index):
+    _, tbl = df2img(df=df_with_index, auto_col_width=False)
 
+    assert (
+        tbl.get_celld()[0, 0]._width
+        == tbl.get_celld()[0, 1]._width
+        == tbl.get_celld()[0, 2]._width
+    )
+    plt.close()
+
+
+def test_not_equal_col_width_if_auto_col_width_true(df_with_index):
+    _, tbl = df2img(df=df_with_index, auto_col_width=True)
+
+    assert (
+        tbl.get_celld()[0, 0]._width
+        != tbl.get_celld()[0, 1]._width
+        != tbl.get_celld()[0, 2]._width
+    )
+    plt.close()
+
+
+def test_equal_col_width(df_with_index):
+    _, tbl = df2img(df=df_with_index, auto_col_width=False, col_width=[1, 1, 1])
+
+    assert (
+        tbl.get_celld()[0, 0]._width
+        == tbl.get_celld()[0, 1]._width
+        == tbl.get_celld()[0, 2]._width
+    )
+    plt.close()
+
+
+def test_equal_col_width_for_two_columns(df_with_index):
+    _, tbl = df2img(df=df_with_index, auto_col_width=False, col_width=[1, 2, 1])
+
+    assert tbl.get_celld()[0, 0]._width != tbl.get_celld()[0, 1]._width
+    assert tbl.get_celld()[0, 1]._width != tbl.get_celld()[0, 2]._width
+    assert tbl.get_celld()[0, 0]._width == tbl.get_celld()[0, 2]._width
+    plt.close()
+
+
+def test_equal_col_width_for_three_columns(df_with_index):
+    _, tbl = df2img(df=df_with_index, auto_col_width=False, col_width=[1, 2, 3])
+
+    assert tbl.get_celld()[0, 0]._width * 2 == tbl.get_celld()[0, 1]._width
+    assert tbl.get_celld()[0, 0]._width * 3 == tbl.get_celld()[0, 2]._width
+    assert tbl.get_celld()[0, 1]._width * 3 == tbl.get_celld()[0, 2]._width * 2
     plt.close()

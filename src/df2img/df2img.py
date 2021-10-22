@@ -1,7 +1,6 @@
 from pathlib import Path
 from typing import Optional, List, Literal, Union
 
-import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 
@@ -18,10 +17,11 @@ def df2img(
     header_bgcolor: str = "white",
     row_bgcolors: List[str] = None,
     edge_color: str = "gray",
-    # col_width: Union[int, float] = 3.0,
-    row_height: Union[int, float] = 0.625,
-    font_size: Union[int, float] = 14.0,
+    fig_width: Union[int, float] = 7.0,
     auto_col_width: bool = True,
+    col_width: Optional[List[Union[int, float]]] = None,
+    row_height: Union[int, float] = 0.5,
+    font_size: Union[int, float] = 10.0,
 ) -> (plt.figure, plt.table):
     """
     Converts a Pandas DataFrame into a matplotlib table and saves it as an
@@ -59,11 +59,20 @@ def df2img(
         will alternate.
     edge_color : str, default "white"
         Grid color of the DataFrame.
-    col_width : float, default 3,0
+    fig_width : float, default 7,0
         Column width.
-    row_height : float, default 0.625
+    auto_col_width : bool, default True
+        If True, auto-sizes the column widths.
+        Takes precedence over `col_width`.
+    col_width : List[float], default None
+        List of `float` specifying the relative column width. For example,
+        if the dataframe has three columns, `[0.25, 0.5, 0.25]` would indicate that
+        the second column's width is double the width of the first and third column.
+        If `None`, all columns will have the same width.
+        If `auto_col_width` is True, `col_width` will be ignored.
+    row_height : float, default 0.5
         Row height.
-    font_size : float, default 14.0
+    font_size : float, default 10.0
         Font size.
 
     Returns
@@ -85,9 +94,19 @@ def df2img(
         row_bgcolors, list
     ), "`row_bgcolors` must be of type `List[str]`."
     assert isinstance(edge_color, str), "`edge_color` must be of type `str`."
-    # assert isinstance(col_width, (int, float)), "`col_width` must be of type `float`."
-    assert isinstance(row_height, (int, float)), "`row_height` must be of type `float`."
-    assert isinstance(font_size, (int, float)), "`font_size` must be of type `float`."
+    assert isinstance(
+        fig_width, (int, float)
+    ), "`fig_width` must be of type `int` or `float`."
+    if col_width is not None:
+        assert isinstance(
+            col_width, list
+        ), "`col_width` must be of a `list` containing `int` or `float`"
+    assert isinstance(
+        row_height, (int, float)
+    ), "`row_height` must be of type `int` or `float`."
+    assert isinstance(
+        font_size, (int, float)
+    ), "`font_size` must be of type `int` or `float`."
 
     if row_bgcolors is None:
         row_bgcolors = ["white"]
@@ -97,17 +116,16 @@ def df2img(
     bbox = [0, 0, 1, 1]  # bounding box to draw the table into
 
     # compute image size according to number of rows and columns
-    # size = (np.array(df.shape[::-1]) + np.array([0, 1])) * np.array(
-    #     [col_width, row_height]
-    # )
+    size = (fig_width, len(df) * row_height)
 
     # create actual figure
-    fig, ax = plt.subplots(figsize=(8, 2 + len(df) / 2.5))
+    fig, ax = plt.subplots(figsize=size)
     ax.axis("off")  # turn off axis labels
     mpl_table = ax.table(
         cellText=df.values,
         colLabels=df.columns,
         bbox=bbox,
+        colWidths=col_width,
     )
     mpl_table.auto_set_font_size(False)
     mpl_table.set_fontsize(font_size)

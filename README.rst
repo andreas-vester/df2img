@@ -19,13 +19,13 @@ Quickstart
 
 You can install the package via ``pip``.
 
-.. code:: python
+.. code-block:: python
 
     pip install df2img
 
 Let's create a simple ``pd.DataFrame`` with some dummy data:
 
-.. code:: python
+.. code-block:: python
 
     import pandas as pd
 
@@ -39,7 +39,7 @@ Let's create a simple ``pd.DataFrame`` with some dummy data:
         index=["row1", "row2", "row3", "row4"],
     )
 
-.. code::
+.. code-block:: python
 
           float_col  str_col
     row1       1.40  string1
@@ -52,7 +52,7 @@ Basics
 
 Saving ``df`` into a png-file is now a one-liner.
 
-.. code:: python
+.. code-block:: python
 
     df2img(df, file="plot1.png")
 
@@ -64,7 +64,7 @@ Formatting
 
 Setting the header row in a different color:
 
-.. code:: python
+.. code-block:: python
 
     df2img(
         df,
@@ -77,9 +77,9 @@ Setting the header row in a different color:
     :alt: plot2.png
 
 
-| You can alternate row colors for better readability. Using HEX colors is also possible:
+You can alternate row colors for better readability. Using HEX colors is also possible:
 
-.. code:: python
+.. code-block:: python
 
     df2img(
         df,
@@ -93,9 +93,9 @@ Setting the header row in a different color:
     :alt: plot3.png
 
 
-| Setting the title, font size, column width, and row height:
+You can set the title and font size.
 
-.. code:: python
+.. code-block:: python
 
     df2img(
         df,
@@ -105,13 +105,54 @@ Setting the header row in a different color:
         header_color="white",
         header_bgcolor="darkred",
         row_bgcolors=["#d7d8d6", "#ffffff"],
-        font_size=10.0,
-        col_width=1.5,
-        row_height=0.3
+        font_size=15.0,
     )
 
 .. image:: https://github.com/andreas-vester/df2img/blob/main/docs/plot4.png?raw=true
     :alt: plot4.png
+
+
+When turning off ``auto_col_width``, you can also control relative column width via the ``col_width`` argument. Let's set the first column's width triple the width of the third column and the second column's width double the width of the third column.
+
+.. code-block:: python
+
+    df2img(
+        df,
+        file="plot5.png",
+        title="This is a title",
+        title_loc="left",
+        header_color="white",
+        header_bgcolor="darkred",
+        row_bgcolors=["#d7d8d6", "#ffffff"],
+        font_size=8.0,
+        auto_col_width=False,
+        col_width=[3, 2, 1,],
+    )
+
+.. image:: https://github.com/andreas-vester/df2img/blob/main/docs/plot5.png?raw=true
+    :alt: plot5.png
+
+
+Too much white-space? - Let's reduce the width of the overall figure.
+
+.. code-block:: python
+
+    df2img(
+        df,
+        file="plot6.png",
+        title="This is a title",
+        title_loc="right",
+        header_color="white",
+        header_bgcolor="darkred",
+        row_bgcolors=["#d7d8d6", "#ffffff"],
+        font_size=8.0,
+        auto_col_width=False,
+        col_width=[3, 2, 1,],
+        fig_width=3.5,
+    )
+
+.. image:: https://github.com/andreas-vester/df2img/blob/main/docs/plot6.png?raw=true
+    :alt: plot6.png
 
 Contributing to df2img
 **********************
