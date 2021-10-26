@@ -4,20 +4,23 @@ Changelog
 
 The format is based on `Keep a changelog <https://keepachangelog.com/de/1.0.0/>`_. This project adheres to `Semantic Versioning <https://semver.org/>`_.
 
-[v0.2.0] - 2021-xx-xx
+[v0.2.0] - 2021-10-26
 =====================
-
-Added
------
-- | Input argument ``auto_col_width`` (`GitHub issue #3 <https://github.com/andreas-vester/df2img/issues/3>`_).
-  | If set to ``True``, the column width of all columns will be automatically set.
 
 Changed
 -------
-- | Input argument ``col_width`` (`GitHub issue #3 <https://github.com/andreas-vester/df2img/issues/3>`_).
-  | Can be used to specify relative column width. For example,
-        if the dataframe has three columns, ``[0.25, 0.5, 0.25]`` would indicate that
-        the second column's width is double the width of the first and third column.
+| **BREAKING CHANGES**!
+| Changed the backend from ``matplotlib`` to ``plotly``. As a result, function name and signature completely changed.
+
+- Possibility to set various title formats/styles.
+- Possibility to set various table header row formats/styles.
+- Possibility to set various table cell formats/styles.
+- Possibility to set figure size.
+
+Added
+-----
+- Possibility to set alignment for individual columns (`GitHub issue #2 <https://github.com/andreas-vester/df2img/issues/2>`_).
+- Possibility to set relative column widths (`GitHub issue #3 <https://github.com/andreas-vester/df2img/issues/3>`_).
 
 Contributors
 ------------

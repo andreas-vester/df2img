@@ -1,173 +1,169 @@
+from math import floor
 from pathlib import Path
-from typing import Optional, List, Literal, Union
+from typing import Optional, List, Union, Tuple
 
 import pandas as pd
-from matplotlib import pyplot as plt
+import plotly
 
 
-def df2img(
-    df: pd.DataFrame,
-    file: Optional[Path] = None,
-    show_fig: bool = False,
-    title: str = None,
-    title_loc: Literal["center", "left", "right"] = "center",
-    header_rows: int = 1,
-    header_cols: int = 1,
-    header_color: str = "black",
-    header_bgcolor: str = "white",
-    row_bgcolors: List[str] = None,
-    edge_color: str = "gray",
-    fig_width: Union[int, float] = 7.0,
-    auto_col_width: bool = True,
-    col_width: Optional[List[Union[int, float]]] = None,
-    row_height: Union[int, float] = 0.5,
-    font_size: Union[int, float] = 10.0,
-) -> (plt.figure, plt.table):
+def plot_dataframe(
+    df: Union[pd.Series, pd.DataFrame],
+    print_index: bool = True,
+    title: Optional[dict] = None,
+    tbl_header: Optional[dict] = None,
+    tbl_cells: Optional[dict] = None,
+    row_fill_color: Optional[Tuple[str, str]] = None,
+    col_width: Optional[Union[int, float, List[Union[int, float]]]] = None,
+    fig_size: Optional[Tuple[int, int]] = None,
+    show_fig: bool = True,
+) -> plotly.graph_objects.Figure:
     """
-    Converts a Pandas DataFrame into a matplotlib table and saves it as an
-    image file (e.g. png or jpg).
-
-    `df.index` will be plotted as the index column. This column's header will be
-    equivalent to `df.index.name`. Likewise, `df.columns` will be used for the column
-    headings.
+    Plots a pd.Series or pd.DataFrame.
 
     Parameters
     ----------
-    df : pd.DataFrame
-        DataFrame that will be converted into image file.
-    file : Path, optional, default None
-        If `None`, converted DataFrame will not be saved.
-        If not `None`, filename of image file.
-    show_fig : bool, default False
+    df : Union[pd.Series, pd.DataFrame]
+    print_index : bool, default True
+        If `True`, prints the dataframe's index. `df.index.name` will become the index
+        column header.
+    title : dict, default None
+        A dict possibly containing `plotly` key/value pairs:
+        https://plotly.com/python/reference/layout/#layout-title
+        More relevant key/value pairs:
+        - font_color : color
+        - font_family : str
+        - font_size : number greater than or equal to 1
+        - text : str
+        - x : number between or equal to 0 and 1, default 0.5
+          Sets the x position with respect to `xref` in normalized coordinates
+          from "0" (left) to "1" (right).
+        - xanchor : enumerated, one of ("auto", "left", "center", "right"),
+          default "auto"
+          Sets the title's horizontal alignment with respect to its x position.
+          "left" means that the title starts at x, "right" means that the title ends
+          at x and "center" means that the title's center is at x. "auto" divides
+          `xref` by three and calculates the `xanchor` value automatically based on
+          the value of `x`.
+    tbl_header, tbl_cells : dict, default None
+        A dict possibly containing `plotly` key/value pairs:
+        https://plotly.com/python/reference/table/#table-header
+        https://plotly.com/python/reference/table/#table-cells
+        More relevant key/value pairs:
+        - align : enumerated or array of enumerateds,
+          one of ("left", "center", "right"), default "center"
+        - fill_color : color, default "white"
+        - font_color : color or array of colors
+        - font_family : str or array of str
+        - font_size : number or array of numbers greater than or equal to 1
+        - height : number, default 28
+        - line_width : number or array of numbers, default 1
+    row_fill_color : Tuple[str, str], default None
+        Tuple of colors that will be used to alternate row colors. Takes precedence
+        over `tbl_cells["fill_color"]`.
+    col_width : number or array of numbers, default None
+        The width of columns expressed as a ratio. Columns fill the available width
+        in proportion of their specified column widths.
+    fig_size : Tuple[int, int], default None
+        Tuple specifying the `width` and `height` of the figure.
+    show_fig : bool, default True
         If True, plot will be displayed.
-    title : Literal["center", "left", "right"], default None
-        Title text.
-    title_loc : str, default "center"
-        Set location of `title`. Can be either "center", "left", or "right"
-    header_rows : int, default False
-        Number of rows that will be treated as headers. These rows do have a
-        different background color (`header_bgcolor`).
-    header_cols : int, default False
-        Number of columns that will be treated as headers. These columns will be
-        printed in bold.
-    header_color : str, default "white"
-        Text color in headers.
-    header_bgcolor : str, default "#DB0011"
-        Color in HEX format.
-    row_bgcolors : List[str] = ["#d7d8d6", "#ffffff"]
-        If `row_bgcolors` contains more than one element, the row background colors
-        will alternate.
-    edge_color : str, default "white"
-        Grid color of the DataFrame.
-    fig_width : float, default 7,0
-        Column width.
-    auto_col_width : bool, default True
-        If True, auto-sizes the column widths.
-        Takes precedence over `col_width`.
-    col_width : List[float], default None
-        List of `float` specifying the relative column width. For example,
-        if the dataframe has three columns, `[0.25, 0.5, 0.25]` would indicate that
-        the second column's width is double the width of the first and third column.
-        If `None`, all columns will have the same width.
-        If `auto_col_width` is True, `col_width` will be ignored.
-    row_height : float, default 0.5
-        Row height.
-    font_size : float, default 10.0
-        Font size.
 
     Returns
     -------
-    (plt.fig, plt.Table)
+    plotly.graph_objects.Figure
     """
-    # some basic input parsing
-    assert title is None or isinstance(title, str), "`title` must be of type `str`."
-    assert title_loc in [
-        "center",
-        "left",
-        "right",
-    ], "`title_loc` must be in ['center', 'left', 'right']"
-    assert isinstance(header_rows, int), "`header_rows` must be of type `int`."
-    assert isinstance(header_cols, int), "`header_cols` must be of type `int`."
-    assert isinstance(header_color, str), "`header_color` must be of type `str`."
-    assert isinstance(header_bgcolor, str), "`header_bgcolor` must be of type `str`."
-    assert row_bgcolors is None or isinstance(
-        row_bgcolors, list
-    ), "`row_bgcolors` must be of type `List[str]`."
-    assert isinstance(edge_color, str), "`edge_color` must be of type `str`."
-    assert isinstance(
-        fig_width, (int, float)
-    ), "`fig_width` must be of type `int` or `float`."
-    if col_width is not None:
-        assert isinstance(
-            col_width, list
-        ), "`col_width` must be of a `list` containing `int` or `float`"
-    if col_width is not None:
-        assert len(col_width) == len(df.columns) + 1, (
-            f"len(col_width) == {len(col_width)}, while len(df.columns) == "
-            f"{len(df.columns) + 1}. "
-            f"Please provide a value for every column in your dataframe."
-        )
-    assert isinstance(
-        row_height, (int, float)
-    ), "`row_height` must be of type `int` or `float`."
-    assert isinstance(
-        font_size, (int, float)
-    ), "`font_size` must be of type `int` or `float`."
 
-    if row_bgcolors is None:
-        row_bgcolors = ["white"]
+    def _alternate_row_colors() -> Optional[List[str]]:
+        color_list = None
+        # alternate row colors
+        row_count = len(df)
+        if row_fill_color is not None:
+            # determine how many rows in `df` and then create a list with alternating
+            # row colors
+            row_odd_count = floor(row_count / 2) + row_count % 2
+            row_even_count = floor(row_count / 2)
+            odd_list = [row_fill_color[0]] * row_odd_count
+            even_list = [row_fill_color[1]] * row_even_count
+            color_list = [x for y in zip(odd_list, even_list) for x in y]
+            if row_odd_count > row_even_count:
+                color_list.append(row_fill_color[0])
 
-    df = df.reset_index()  # reset the dataframe index to allow for plotting it
+        return color_list
 
-    bbox = [0, 0, 1, 1]  # bounding box to draw the table into
+    def _tbl_values():
+        if print_index:
+            header_values = [
+                "<b>" + x + "<b>"
+                for x in [
+                    df.index.name if df.index.name is not None else "",
+                    *df.columns,
+                ]
+            ]
+            cell_values = [df.index, *[df[col] for col in df]]
+        else:
+            header_values = ["<b>" + x + "<b>" for x in df.columns.to_list()]
+            cell_values = [df[col] for col in df]
 
-    # compute image size according to number of rows and columns
-    size = (fig_width, len(df) * row_height)
+        return header_values, cell_values
 
-    # create actual figure
-    fig, ax = plt.subplots(figsize=size)
-    ax.axis("off")  # turn off axis labels
-    mpl_table = ax.table(
-        cellText=df.values,
-        colLabels=df.columns,
-        bbox=bbox,
-        colWidths=col_width,
+    row_color_list = _alternate_row_colors()
+    header_vals, cell_vals = _tbl_values()
+
+    if not tbl_header:
+        tbl_header = dict()
+    tbl_header.update(values=header_vals)
+
+    if not tbl_cells:
+        tbl_cells = dict()
+    tbl_cells.update(
+        values=cell_vals,
+        fill_color=[row_color_list] * len(df)
+        if row_color_list
+        else tbl_cells.get("fill_color"),
     )
-    mpl_table.auto_set_font_size(False)
-    mpl_table.set_fontsize(font_size)
-    if auto_col_width:
-        mpl_table.auto_set_column_width(col=list(range(len(df.columns))))
 
-    # format header rows and cols and alternate every other row's color
-    for k, cell in mpl_table.get_celld().items():  # k returns (row, col) tuple
-        cell.set_edgecolor(edge_color)
-        cell.set_facecolor(row_bgcolors[k[0] % len(row_bgcolors)])
-        if k[0] in range(header_rows):  # check if current row is header row
-            cell.set_text_props(
-                weight="bold",
-                color=header_color,
-                horizontalalignment="center",
-            )
-            cell.set_facecolor(header_bgcolor)
-        if k[1] in range(header_cols):  # check if current column is header column
-            cell.set_text_props(
-                weight="bold",
-                horizontalalignment="left",
-            )
+    fig = plotly.graph_objs.Figure(
+        data=[plotly.graph_objs.Table(header=tbl_header, cells=tbl_cells)]
+    )
 
-    if title:
-        ax.set_title(
-            title,
-            fontdict=dict(fontsize=font_size + 1, fontweight="bold"),
-            loc=title_loc,
-        )
+    fig.data[0]["columnwidth"] = col_width if col_width else None
 
-    plt.tight_layout()
+    if not title:
+        title = dict()
+    title.update(
+        x=0.01 if title.get("x") is None else title.get("x"),
+        xanchor="left" if title.get("xanchor") is None else title.get("xanchor"),
+    )
+
+    fig.update_layout(
+        title=title,
+        margin=dict(autoexpand=False, b=5, l=5, r=5, t=40 if title.get("text") else 5),
+        width=fig_size[0] if fig_size else None,
+        height=fig_size[1] if fig_size else None,
+        autosize=False if col_width else None,
+    )
 
     if show_fig:
-        plt.show()
+        fig.show()
 
-    if file:
-        fig.savefig(file)
+    return fig
 
-    return fig, mpl_table
+
+def save_dataframe(fig: plotly.graph_objects.Figure, filename: Path) -> None:
+    """
+    Writes `plotly` figure to disk.
+
+    Parameters
+    ----------
+    fig : plotly.graph_objects.Figure
+        Figure object to save.
+    filename : Path
+        Filename including path where to save figure.
+
+    Returns
+    -------
+    None
+    """
+    fig.write_image(filename)
+
+    return None
