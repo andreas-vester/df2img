@@ -5,14 +5,17 @@ df2img: Save a Pandas DataFrame as image
 What is it all about?
 *********************
 | Have you ever tried to save a ``pd.DataFrame`` into an image file? This is not a straightforward process at all. Unfortunately, ``pandas`` itself doesn't provide this functionality out of the box.
+
 | **df2img** tries to fill the gap. It is a Python library that greatly simplifies the process of saving a ``pd.DataFrame`` into an image file (e.g. ``png`` or ``jpg``).
+
+It is a wrapper/convenience function in order to create a ``plotly`` Table. That is, one can use ``plotly``'s styling function to format the table.
 
 Dependencies
 ************
 **df2img** has a limited number of dependencies, namely
 
 - ``pandas``
-- ``matplotlib``
+- ``plotly``
 
 Quickstart
 **********
@@ -35,7 +38,7 @@ Let's create a simple ``pd.DataFrame`` with some dummy data:
 
     import pandas as pd
 
-    from df2img import df2img
+    import df2img
 
     df = pd.DataFrame(
         data=dict(
@@ -56,11 +59,16 @@ Let's create a simple ``pd.DataFrame`` with some dummy data:
 Basics
 ------
 
-Saving ``df`` into a png-file is now a one-liner.
+Saving ``df`` into a png-file now takes just two lines of code including some styling out of the box.
+
+* First, we create a ``plotly`` figure.
+* Second, we save the figure to disk.
 
 .. code-block:: python
 
-    df2img(df, file="plot1.png")
+    fig = df2img.plot_dataframe(df, fig_size=(500, 140))
+
+    df2img.save_dataframe(fig=fig, filename="plot1.png")
 
 .. image:: https://github.com/andreas-vester/df2img/blob/main/docs/plot1.png?raw=true
     :alt: plot1.png
@@ -68,99 +76,113 @@ Saving ``df`` into a png-file is now a one-liner.
 Formatting
 ----------
 
-Setting the header row in a different color:
+You can control the settings for the header row via the ``tbl_header`` input argument. This accepts a regular ``dict``.
+This ``dict`` can comprise various key/value pairs that are also accepted by ``plotly``. All available key/value pairs
+can be seen at ``plotly``'s website at https://plotly.com/python/reference/table/#table-header.
+
+Let's set the header row in a different color and size. Also, let's set the alignment to "left".
 
 .. code-block:: python
 
-    df2img(
+    fig = df2img.plot_dataframe(
         df,
-        file="plot2.png",
-        header_color="white",
-        header_bgcolor="darkred",
+        tbl_header=dict(
+            align="left",
+            fill_color="blue",
+            font_color="white",
+            font_size=14,
+        ),
+        fig_size=(500, 140),
     )
+
+    df2img.save_dataframe(fig=fig, filename="plot2.png")
 
 .. image:: https://github.com/andreas-vester/df2img/blob/main/docs/plot2.png?raw=true
     :alt: plot2.png
 
 
-You can alternate row colors for better readability. Using HEX colors is also possible:
+Controlling the table body (cells) is basically the same. Just use the ``tbl_cells`` input argument, which happens to be
+a ``dict``, too. See https://plotly.com/python/reference/table/#table-cells for all the possible key/value pairs.
+
+Let's print the table cell values in yellow on a green background and align them "right".
 
 .. code-block:: python
 
-    df2img(
+    fig = df2img.plot_dataframe(
         df,
-        file="plot3.png",
-        header_color="white",
-        header_bgcolor="darkred",
-        row_bgcolors=["#d7d8d6", "#ffffff"],
+        tbl_cells=dict(
+            align="right",
+            fill_color="green",
+            font_color="yellow",
+        ),
+        fig_size=(500, 140),
     )
+
+    df2img.save_dataframe(fig=fig, filename="plot3.png")
 
 .. image:: https://github.com/andreas-vester/df2img/blob/main/docs/plot3.png?raw=true
     :alt: plot3.png
 
 
-You can set the title and font size.
+You can alternate row colors for better readability by using the ``row_fill_color`` input argument. Using HEX colors is also possible:
 
 .. code-block:: python
 
-    df2img(
+    fig = df2img.plot_dataframe(
         df,
-        file="plot4.png",
-        title="This is a title",
-        title_loc="left",
-        header_color="white",
-        header_bgcolor="darkred",
-        row_bgcolors=["#d7d8d6", "#ffffff"],
-        font_size=15.0,
+        row_fill_color=("#ffffff", "#d7d8d6"),
+        fig_size=(500, 140),
     )
+
+    df2img.save_dataframe(fig=fig, filename="plot4.png")
 
 .. image:: https://github.com/andreas-vester/df2img/blob/main/docs/plot4.png?raw=true
     :alt: plot4.png
 
 
-When turning off ``auto_col_width``, you can also control relative column width via the ``col_width`` argument. Let's set the first column's width triple the width of the third column and the second column's width double the width of the third column.
+Setting the title will be controlled via the ``title`` input argument. You can find the relevant key/value pairs here:
+https://plotly.com/python/reference/layout/#layout-title.
+
+Let's put the title in a different font and size. In addition, we can control the alignment via the ``x`` key/value pair.
+It sets the x (horizontal) position in normalized coordinates from "0" (left) to "1" (right).
 
 .. code-block:: python
 
-    df2img(
+    fig = df2img.plot_dataframe(
         df,
-        file="plot5.png",
-        title="This is a title",
-        title_loc="left",
-        header_color="white",
-        header_bgcolor="darkred",
-        row_bgcolors=["#d7d8d6", "#ffffff"],
-        font_size=8.0,
-        auto_col_width=False,
-        col_width=[3, 2, 1,],
+        title=dict(
+            font_color="darkred",
+            font_family="Times New Roman",
+            font_size=24,
+            text="This is a title starting at the x-value x=0.1",
+            x=0.1,
+            xanchor="left",
+        ),
+        fig_size=(500, 140),
     )
+    df2img.save_dataframe(fig=fig, filename="plot5.png")
 
 .. image:: https://github.com/andreas-vester/df2img/blob/main/docs/plot5.png?raw=true
     :alt: plot5.png
 
 
-Too much white-space? - Let's reduce the width of the overall figure.
+You can also control relative column width via the ``col_width`` argument. Let's set the first column's width triple
+the width of the third column and the second column's width double the width of the third column.
 
 .. code-block:: python
 
-    df2img(
+    fig = df2img.plot_dataframe(
         df,
-        file="plot6.png",
-        title="This is a title",
-        title_loc="right",
-        header_color="white",
-        header_bgcolor="darkred",
-        row_bgcolors=["#d7d8d6", "#ffffff"],
-        font_size=8.0,
-        auto_col_width=False,
-        col_width=[3, 2, 1,],
-        fig_width=3.5,
+        col_width=[3, 2, 1],
+        fig_size=(500, 140),
     )
+
+    df2img.save_dataframe(fig=fig, filename="plot6.png")
 
 .. image:: https://github.com/andreas-vester/df2img/blob/main/docs/plot6.png?raw=true
     :alt: plot6.png
 
 Contributing to df2img
 **********************
-All bug reports and bug fixes, improvements to the documentation, or general ideas are welcome. Simply open an `issue <https://github.com/andreas-vester/df2img/issues>`_.
-
+All bug reports and bug fixes, improvements to the documentation, or general ideas are welcome. Simply open an
+`issue <https://github.com/andreas-vester/df2img/issues>`_.
