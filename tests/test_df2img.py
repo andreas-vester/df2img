@@ -109,6 +109,18 @@ def test_plot_dataframe_header(df_with_index_even_row_count):
     assert fig.data[0].header.line.width == 2
 
 
+def test_plot_dataframe_header_invisible(df_with_index_even_row_count):
+    fig = df2img.plot_dataframe(
+        df=df_with_index_even_row_count,
+        tbl_header_visible=False,
+        show_fig=True,
+    )
+
+    assert fig.data[0].header.fill.color == "white"
+    assert fig.data[0].header.font.color == "white"
+    assert fig.data[0].header.line.color == "white"
+
+
 def test_plot_dataframe_cells(df_with_index_even_row_count):
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
