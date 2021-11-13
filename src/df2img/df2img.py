@@ -46,7 +46,7 @@ def plot_dataframe(
           `xref` by three and calculates the `xanchor` value automatically based on
           the value of `x`.
     tbl_header_visible : bool, default True,
-        If `True`, table header will be visible. Takes precedence over `tbl_header`
+        If `False`, table header will be invisible. Takes precedence over `tbl_header`
         argument.
     tbl_header, tbl_cells : dict, default None
         A dict possibly containing `plotly` key/value pairs:
@@ -118,7 +118,9 @@ def plot_dataframe(
     tbl_header.update(values=header_vals)
 
     if not tbl_header_visible:
-        tbl_header.update(fill_color="white", font_color="white", line_color="white")
+        tbl_header.update(
+            fill_color="white", font_color="white", line_color="white", height=1
+        )
 
     if not tbl_cells:
         tbl_cells = dict()

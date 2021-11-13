@@ -4,6 +4,22 @@ Changelog
 
 The format is based on `Keep a changelog <https://keepachangelog.com/de/1.0.0/>`_. This project adheres to `Semantic Versioning <https://semver.org/>`_.
 
+[v0.2.1] - 2021-11-13
+=====================
+
+Added
+-----
+- Possibility to hide the header row.
+
+  Added input argument ``tbl_header_visible``, which controls the behavior. If set to `False`, the table header will be invisible. ``tbl_header_visible`` takes precedence over ``tbl_header`` input argument. That is, if you set it to `False`, it doesn't matter whether you provide the ``tbl_header`` argument.
+
+Contributors
+------------
+A total of 1 people contributed to this release. People with a "+" by their names contributed a patch for the first time.
+
+- Andreas Vester
+
+
 [v0.2.0] - 2021-10-26
 =====================
 
@@ -28,6 +44,7 @@ A total of 1 people contributed to this release. People with a "+" by their name
 
 - Andreas Vester
 
+
 [v0.1.1] - 2021-10-02
 =====================
 
@@ -40,6 +57,7 @@ Contributors
 A total of 1 people contributed to this release. People with a "+" by their names contributed a patch for the first time.
 
 - Andreas Vester
+
 
 [v0.1.0] - 2021-09-17
 =====================
