@@ -10,6 +10,7 @@ def plot_dataframe(
     df: Union[pd.Series, pd.DataFrame],
     print_index: bool = True,
     title: Optional[dict] = None,
+    tbl_header_visible: bool = True,
     tbl_header: Optional[dict] = None,
     tbl_cells: Optional[dict] = None,
     row_fill_color: Optional[Tuple[str, str]] = None,
@@ -44,6 +45,9 @@ def plot_dataframe(
           at x and "center" means that the title's center is at x. "auto" divides
           `xref` by three and calculates the `xanchor` value automatically based on
           the value of `x`.
+    tbl_header_visible : bool, default True,
+        If `False`, table header will be invisible. Takes precedence over `tbl_header`
+        argument.
     tbl_header, tbl_cells : dict, default None
         A dict possibly containing `plotly` key/value pairs:
         https://plotly.com/python/reference/table/#table-header
@@ -112,6 +116,11 @@ def plot_dataframe(
     if not tbl_header:
         tbl_header = dict()
     tbl_header.update(values=header_vals)
+
+    if not tbl_header_visible:
+        tbl_header.update(
+            fill_color="white", font_color="white", line_color="white", height=1
+        )
 
     if not tbl_cells:
         tbl_cells = dict()

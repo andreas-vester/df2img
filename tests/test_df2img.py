@@ -41,7 +41,7 @@ def df_with_index_odd_row_count():
 
 
 def test_version():
-    assert __version__ == "0.2.0"
+    assert __version__ == "0.2.1"
 
 
 def test_plot_dataframe_without_args(df_without_index):
@@ -107,6 +107,32 @@ def test_plot_dataframe_header(df_with_index_even_row_count):
     assert fig.data[0].header.font.size == 14
     assert fig.data[0].header.height == 20
     assert fig.data[0].header.line.width == 2
+
+
+def test_plot_dataframe_header_invisible(df_with_index_even_row_count):
+    """
+    Tests if `table_header_visible` argument takes really precedence over `tbl_header`.
+    """
+    fig = df2img.plot_dataframe(
+        df=df_with_index_even_row_count,
+        tbl_header_visible=False,
+        tbl_header=dict(
+            align="right",
+            fill_color="blue",
+            font_color="black",
+            line_color="gray",
+            font_family="Arial",
+            font_size=14,
+            height=100,
+            line_width=2,
+        ),
+        show_fig=False,
+    )
+
+    assert fig.data[0].header.fill.color == "white"
+    assert fig.data[0].header.font.color == "white"
+    assert fig.data[0].header.line.color == "white"
+    assert fig.data[0].header.height == 1
 
 
 def test_plot_dataframe_cells(df_with_index_even_row_count):
