@@ -29,7 +29,7 @@ author = "Andreas Vester"
 
 # The full version, including alpha/beta/rc tags
 release = df2img.__version__
-
+version = df2img.__version__
 
 # -- General configuration ---------------------------------------------------
 
