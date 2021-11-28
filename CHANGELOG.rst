@@ -12,7 +12,7 @@ Added
 -----
 - Added input argument ``plotly_renderer`` in order to select the appropriate renderer. For more information about
   ``plotly``'s renderers, visit the respective website at https://plotly.com/python/renderers/.
-- Extensive documentation now available at www.df2img.readthedocs.io/en/latest
+- Extensive documentation now available at https://df2img.readthedocs.io/en/latest/
 
 
 [v0.2.1] - 2021-11-13
