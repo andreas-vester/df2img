@@ -17,6 +17,7 @@ def plot_dataframe(
     col_width: Optional[Union[int, float, List[Union[int, float]]]] = None,
     fig_size: Optional[Tuple[int, int]] = None,
     show_fig: bool = True,
+    plotly_renderer: str = "png",
 ) -> plotly.graph_objects.Figure:
     """
     Plots a pd.Series or pd.DataFrame.
@@ -71,6 +72,9 @@ def plot_dataframe(
         Tuple specifying the `width` and `height` of the figure.
     show_fig : bool, default True
         If True, plot will be displayed.
+    plotly_renderer : str, default "png"
+        Option to specify how and where to display the figure. See
+        https://plotly.com/python/renderers/ for further information.
 
     Returns
     -------
@@ -153,7 +157,7 @@ def plot_dataframe(
     )
 
     if show_fig:
-        fig.show()
+        fig.show(renderer=plotly_renderer)
 
     return fig
 
