@@ -70,7 +70,8 @@ Saving ``df`` into a png-file now takes just two lines of code including some st
 
     df2img.save_dataframe(fig=fig, filename="plot1.png")
 
-.. image:: https://github.com/andreas-vester/df2img/blob/main/docs/plot1.png?raw=true
+
+.. image:: ./docs/source/images/plot1.png
     :alt: plot1.png
 
 Formatting
@@ -95,9 +96,7 @@ Let's set the header row in a different color and size. Also, let's set the alig
         fig_size=(500, 140),
     )
 
-    df2img.save_dataframe(fig=fig, filename="plot2.png")
-
-.. image:: https://github.com/andreas-vester/df2img/blob/main/docs/plot2.png?raw=true
+.. image:: ./docs/source/images/plot2.png
     :alt: plot2.png
 
 
@@ -118,9 +117,7 @@ Let's print the table cell values in yellow on a green background and align them
         fig_size=(500, 140),
     )
 
-    df2img.save_dataframe(fig=fig, filename="plot3.png")
-
-.. image:: https://github.com/andreas-vester/df2img/blob/main/docs/plot3.png?raw=true
+.. image:: ./docs/source/images/plot3.png
     :alt: plot3.png
 
 
@@ -134,9 +131,7 @@ You can alternate row colors for better readability by using the ``row_fill_colo
         fig_size=(500, 140),
     )
 
-    df2img.save_dataframe(fig=fig, filename="plot4.png")
-
-.. image:: https://github.com/andreas-vester/df2img/blob/main/docs/plot4.png?raw=true
+.. image:: ./docs/source/images/plot4.png
     :alt: plot4.png
 
 
@@ -160,9 +155,8 @@ It sets the x (horizontal) position in normalized coordinates from "0" (left) to
         ),
         fig_size=(500, 140),
     )
-    df2img.save_dataframe(fig=fig, filename="plot5.png")
 
-.. image:: https://github.com/andreas-vester/df2img/blob/main/docs/plot5.png?raw=true
+.. image:: ./docs/source/images/plot5.png
     :alt: plot5.png
 
 
@@ -177,9 +171,7 @@ the width of the third column and the second column's width double the width of 
         fig_size=(500, 140),
     )
 
-    df2img.save_dataframe(fig=fig, filename="plot6.png")
-
-.. image:: https://github.com/andreas-vester/df2img/blob/main/docs/plot6.png?raw=true
+.. image:: ./docs/source/images/plot6.png
     :alt: plot6.png
 
 Contributing to df2img

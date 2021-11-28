@@ -19,28 +19,32 @@ def plot_dataframe(
     show_fig: bool = True,
     plotly_renderer: str = "png",
 ) -> plotly.graph_objects.Figure:
-    """
-    Plots a pd.Series or pd.DataFrame.
+    """Plots a pd.Series or pd.DataFrame.
 
     Parameters
     ----------
     df : Union[pd.Series, pd.DataFrame]
+        Series or dataframe to be plotted.
     print_index : bool, default True
         If `True`, prints the dataframe's index. `df.index.name` will become the index
         column header.
     title : dict, default None
         A dict possibly containing `plotly` key/value pairs:
         https://plotly.com/python/reference/layout/#layout-title
+
         More relevant key/value pairs:
+
         - font_color : color
         - font_family : str
         - font_size : number greater than or equal to 1
         - text : str
         - x : number between or equal to 0 and 1, default 0.5
+
           Sets the x position with respect to `xref` in normalized coordinates
           from "0" (left) to "1" (right).
         - xanchor : enumerated, one of ("auto", "left", "center", "right"),
           default "auto"
+
           Sets the title's horizontal alignment with respect to its x position.
           "left" means that the title starts at x, "right" means that the title ends
           at x and "center" means that the title's center is at x. "auto" divides
@@ -53,7 +57,9 @@ def plot_dataframe(
         A dict possibly containing `plotly` key/value pairs:
         https://plotly.com/python/reference/table/#table-header
         https://plotly.com/python/reference/table/#table-cells
+
         More relevant key/value pairs:
+
         - align : enumerated or array of enumerateds,
           one of ("left", "center", "right"), default "center"
         - fill_color : color, default "white"
@@ -79,6 +85,7 @@ def plot_dataframe(
     Returns
     -------
     plotly.graph_objects.Figure
+        Returns a figure object.
     """
 
     def _alternate_row_colors() -> Optional[List[str]]:
@@ -163,8 +170,7 @@ def plot_dataframe(
 
 
 def save_dataframe(fig: plotly.graph_objects.Figure, filename: Path) -> None:
-    """
-    Writes `plotly` figure to disk.
+    """Writes `plotly` figure to disk.
 
     Parameters
     ----------
