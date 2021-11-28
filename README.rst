@@ -17,6 +17,10 @@ Dependencies
 - ``pandas``
 - ``plotly``
 
+Documentation
+*************
+An extensive documentation is available at https://df2img.readthedocs.io/.
+
 Quickstart
 **********
 
