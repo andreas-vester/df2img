@@ -194,3 +194,9 @@ cython_debug/
 
 # Pyhcarm
 .idea/
+
+# pyenv
+.python-version
+
+# VS Code
+.vscode/

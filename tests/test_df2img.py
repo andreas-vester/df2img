@@ -41,7 +41,7 @@ def df_with_index_odd_row_count():
 
 
 def test_version():
-    assert __version__ == "0.2.1"
+    assert __version__ == "0.2.3"
 
 
 def test_plot_dataframe_without_args(df_without_index):
@@ -209,6 +209,24 @@ def test_plot_dataframe_fig_size(df_with_index_even_row_count):
 
     assert fig.layout.width == 400
     assert fig.layout.height == 200
+
+
+def test_plot_dataframe_paper_bgcolor(df_with_index_even_row_count):
+    fig = df2img.plot_dataframe(
+        df=df_with_index_even_row_count,
+        paper_bgcolor="rgba(0, 0, 0, 0)",
+        show_fig=False,
+    )
+
+    assert fig.layout.paper_bgcolor == "rgba(0, 0, 0, 0)"
+
+    fig = df2img.plot_dataframe(
+        df=df_with_index_even_row_count,
+        paper_bgcolor="yellow",
+        show_fig=False,
+    )
+
+    assert fig.layout.paper_bgcolor == "yellow"
 
 
 def test_save_dataframe(df_without_index):

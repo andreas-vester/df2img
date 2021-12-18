@@ -18,6 +18,7 @@ def plot_dataframe(
     fig_size: Optional[Tuple[int, int]] = None,
     show_fig: bool = True,
     plotly_renderer: str = "png",
+    **layout_kwargs,
 ) -> plotly.graph_objects.Figure:
     """Plots a pd.Series or pd.DataFrame.
 
@@ -81,11 +82,16 @@ def plot_dataframe(
     plotly_renderer : str, default "png"
         Option to specify how and where to display the figure. See
         https://plotly.com/python/renderers/ for further information.
+    **layout_kwargs
+        Plotly accepts a large number of layout-related keyword arguments.
+        Please find detailed descriptions at
+        https://plotly.com/python-api-reference/generated/plotly.graph_objects.Layout.html.
 
     Returns
     -------
     plotly.graph_objects.Figure
         Returns a figure object.
+        
     """
 
     def _alternate_row_colors() -> Optional[List[str]]:
@@ -161,6 +167,7 @@ def plot_dataframe(
         width=fig_size[0] if fig_size else None,
         height=fig_size[1] if fig_size else None,
         autosize=False if col_width else None,
+        **layout_kwargs,
     )
 
     if show_fig:
