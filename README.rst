@@ -16,6 +16,7 @@ Dependencies
 
 - ``pandas``
 - ``plotly``
+- ``kaleido``
 
 Documentation
 *************
