@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 import pytest
 
 from df2img import __version__
-import df2img.df2img
+import df2img
 
 
 @pytest.fixture(scope="module")

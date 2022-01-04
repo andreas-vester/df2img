@@ -84,7 +84,7 @@ def plot_dataframe(
         https://plotly.com/python/renderers/ for further information.
     **layout_kwargs
         Plotly accepts a large number of layout-related keyword arguments.
-        Please find detailed descriptions at
+        A detailed descriptions is available at
         https://plotly.com/python-api-reference/generated/plotly.graph_objects.Layout.html.
 
     Returns
