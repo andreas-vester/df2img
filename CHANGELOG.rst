@@ -6,6 +6,14 @@ The format is based on `Keep a changelog <https://keepachangelog.com/de/1.0.0/>`
 This project adheres to `Semantic Versioning <https://semver.org/>`_.
 
 
+[v0.2.4] - 2022-01-22
+=====================
+
+Changed
+-------
+- Updated extra dependencies.
+
+
 [v0.2.3] - 2022-01-04
 =====================
 
