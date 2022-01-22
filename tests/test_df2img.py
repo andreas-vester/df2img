@@ -4,7 +4,6 @@ import pandas as pd
 import plotly.graph_objects as go
 import pytest
 
-from df2img import __version__
 import df2img
 
 
@@ -41,9 +40,10 @@ def df_with_index_odd_row_count():
 
 
 def test_version():
-    assert __version__ == "0.2.3"
+    assert df2img.__version__ == "0.2.3"
 
 
+# noinspection PyUnresolvedReferences
 def test_plot_dataframe_without_args(df_without_index):
     fig = df2img.plot_dataframe(df=df_without_index, print_index=False, show_fig=False)
 
@@ -52,6 +52,7 @@ def test_plot_dataframe_without_args(df_without_index):
     assert fig.data[0].header.values == ("<b>float_col<b>", "<b>str_col<b>")
 
 
+# noinspection PyUnresolvedReferences
 def test_plot_dataframe_without_args_print_index(df_with_index_even_row_count):
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count, print_index=True, show_fig=False
