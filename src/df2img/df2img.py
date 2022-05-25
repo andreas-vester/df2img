@@ -1,6 +1,6 @@
 from math import floor
 from pathlib import Path
-from typing import Optional, List, Union, Tuple
+from typing import List, Optional, Tuple, Union
 
 import pandas as pd
 import plotly
@@ -91,7 +91,7 @@ def plot_dataframe(
     -------
     plotly.graph_objects.Figure
         Returns a figure object.
-        
+
     """
 
     def _alternate_row_colors() -> Optional[List[str]]:
