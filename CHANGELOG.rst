@@ -6,6 +6,22 @@ The format is based on `Keep a changelog <https://keepachangelog.com/de/1.0.0/>`
 This project adheres to `Semantic Versioning <https://semver.org/>`_.
 
 
+[v0.2.5] - 2022-06-02
+=====================
+
+Changed
+-------
+- Integrated ``pre-commit`` with the following hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: check-yaml
+  - id: check-added-large-files
+  - id: black
+  - id: flake8
+  - id: isort
+- Updated dependencies (tested with pandas v1.4.2 and plotly v5.8.0).
+
+
 [v0.2.4] - 2022-01-22
 =====================
 

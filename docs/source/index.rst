@@ -6,6 +6,12 @@
 df2img: Save a Pandas DataFrame as image
 ########################################
 
+.. image:: https://img.shields.io/pypi/v/df2img
+.. image:: https://img.shields.io/pypi/pyversions/df2img
+.. image:: https://img.shields.io/github/license/andreas-vester/df2img
+.. image:: https://img.shields.io/github/issues/andreas-vester/df2img
+.. image:: https://img.shields.io/github/stars/andreas-vester/df2img
+
 What is it all about?
 *********************
 Have you ever tried to save a ``pd.DataFrame`` into an image file? This is not a straightforward process at all.
