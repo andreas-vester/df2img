@@ -3,10 +3,20 @@ df2img: Save a Pandas DataFrame as image
 ########################################
 
 .. image:: https://img.shields.io/pypi/v/df2img
+        :target: https://img.shields.io/pypi/v/df2img
+        :alt: Latest PyPI Version
 .. image:: https://img.shields.io/pypi/pyversions/df2img
+        :target: https://img.shields.io/pypi/pyversions/df2img
+        :alt: Supported Python versions
 .. image:: https://img.shields.io/github/license/andreas-vester/df2img
+        :target: https://img.shields.io/github/license/andreas-vester/df2img
+        :alt: License: MIT
 .. image:: https://img.shields.io/github/issues/andreas-vester/df2img
+        :target: https://img.shields.io/github/issues/andreas-vester/df2img
+        :alt: Open GitHub issues
 .. image:: https://img.shields.io/github/stars/andreas-vester/df2img
+        :target: https://img.shields.io/github/stars/andreas-vester/df2img
+        :alt: GitHub stars
 
 What is it all about?
 *********************
