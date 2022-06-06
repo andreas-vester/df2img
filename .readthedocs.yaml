@@ -9,10 +9,6 @@ sphinx:
   fail_on_warning: true
   configuration: docs/source/conf.py
 
-formats:
-  - pdf
-  - epub
-
 python:
   # Install our python package before building the docs
   install:
