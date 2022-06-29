@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 import pytest
 
 import df2img
+from numpy.random import default_rng
 
 
 @pytest.fixture(scope="module")
@@ -30,12 +31,28 @@ def df_with_index_even_row_count():
 
 @pytest.fixture(scope="module")
 def df_with_index_odd_row_count():
+    rng = default_rng()
+    vals = rng.integers(low=0, high=100, size=(4, 5))
+    mi_cols = pd.MultiIndex.from_tuples(
+        [
+            ("level0_col0", "level1_col0_0"),
+            ("level0_col0", "level1_col0_1"),
+            ("level0_col1", "level1_col1_0"),
+            ("level0_col1", "level1_col1_1"),
+            ("level0_col1", "level1_col1_2"),
+        ]
+    )
+    return pd.DataFrame(data=vals, columns=mi_cols)
+
+
+@pytest.fixture(scope="module")
+def df_with_multi_column_index():
     return pd.DataFrame(
         data=dict(
-            float_col=[1.4, float("NaN"), 250, 24.65, 100],
-            str_col=("string1", "string2", float("NaN"), "string4", "last_string"),
+            float_col=[1.4, float("NaN"), 250, 24.65],
+            str_col=("string1", "string2", float("NaN"), "string4"),
         ),
-        index=["row1", "row2", "row3_with_a_long_string", "row4", "last_row"],
+        index=["row1", "row2", "row3_with_a_long_string", "row4"],
     )
 
 
