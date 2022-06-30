@@ -247,6 +247,12 @@ def test_plot_dataframe_paper_bgcolor(df_with_index_even_row_count):
     assert fig.layout.paper_bgcolor == "yellow"
 
 
+@pytest.mark.xfail
+def test_plot_dataframe_with_multi_column_index(df_with_multi_column_index):
+    fig = df2img.plot_dataframe(df=df_with_multi_column_index)
+    assert fig
+
+
 def test_save_dataframe(df_without_index):
     fig = df2img.plot_dataframe(df=df_without_index, show_fig=False)
 
