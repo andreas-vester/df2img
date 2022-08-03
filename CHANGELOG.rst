@@ -6,6 +6,50 @@ The format is based on `Keep a changelog <https://keepachangelog.com/de/1.0.0/>`
 This project adheres to `Semantic Versioning <https://semver.org/>`_.
 
 
+
+[v0.2.6] - 2022-08-03
+=====================
+
+Changed
+-------
+- Bumped direct dependencies
+
+  - Bumps `pandas <https://github.com/pandas-dev/pandas>`_ from 1.4.2 to 1.4.3.
+
+    - `Release notes <https://pandas.pydata.org/pandas-docs/stable/whatsnew/index.html#version-1-4>`__
+    - `Commits <https://github.com/pandas-dev/pandas/compare/v1.4.2...v1.4.3>`__
+
+    updated-dependencies:
+
+    - | dependency-name: pandas
+      | dependency-type: direct
+
+  - Bumps `plotly <https://github.com/plotly/plotly.py>`_ from 5.8.0 to 5.9.0.
+
+    - `Release notes <https://github.com/plotly/plotly.py/releases>`__
+    - `Commits <https://github.com/plotly/plotly.py/compare/v5.8.0...5.9.0>`__
+
+    updated-dependencies:
+
+    - | dependency-name: plotly
+      | dependency-type: direct
+
+- Bumps various indirect dependencies to latest versions.
+
+Security
+--------
+- Bumps `mistune <https://github.com/lepture/mistune>`_ from 0.8.4 to 2.0.3.
+
+  - `Release notes <https://github.com/lepture/mistune/releases>`__
+  - `Changelog <https://github.com/lepture/mistune/blob/master/docs/changes.rst>`__
+  - `Commits <https://github.com/lepture/mistune/compare/v0.8.4...v2.0.3>`__
+
+  updated-dependencies:
+
+  - | dependency-name: mistune
+    | dependency-type: indirect
+
+
 [v0.2.5] - 2022-06-02
 =====================
 

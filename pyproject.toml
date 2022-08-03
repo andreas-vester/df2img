@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "df2img"
-version = "0.2.5"
+version = "0.2.6"
 description = "Save a Pandas DataFrame as image"
 license = "MIT"
 authors = ["Andreas Vester <andreas@vester-online.de>"]
