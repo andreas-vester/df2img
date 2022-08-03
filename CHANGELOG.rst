@@ -7,6 +7,23 @@ This project adheres to `Semantic Versioning <https://semver.org/>`_.
 
 
 
+[v0.2.7] - 2022-08-03
+=====================
+
+Security
+--------
+- Bumps `mistune <https://github.com/lepture/mistune>`_ from 0.8.4 to 2.0.3.
+
+  - `Release notes <https://github.com/lepture/mistune/releases>`__
+  - `Changelog <https://github.com/lepture/mistune/blob/master/docs/changes.rst>`__
+  - `Commits <https://github.com/lepture/mistune/compare/v0.8.4...v2.0.3>`__
+
+  updated-dependencies:
+
+  - | dependency-name: mistune
+    | dependency-type: indirect
+
+
 [v0.2.6] - 2022-08-03
 =====================
 
@@ -35,19 +52,6 @@ Changed
       | dependency-type: direct
 
 - Bumps various indirect dependencies to latest versions.
-
-Security
---------
-- Bumps `mistune <https://github.com/lepture/mistune>`_ from 0.8.4 to 2.0.3.
-
-  - `Release notes <https://github.com/lepture/mistune/releases>`__
-  - `Changelog <https://github.com/lepture/mistune/blob/master/docs/changes.rst>`__
-  - `Commits <https://github.com/lepture/mistune/compare/v0.8.4...v2.0.3>`__
-
-  updated-dependencies:
-
-  - | dependency-name: mistune
-    | dependency-type: indirect
 
 
 [v0.2.5] - 2022-06-02
