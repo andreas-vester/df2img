@@ -7,6 +7,15 @@ This project adheres to `Semantic Versioning <https://semver.org/>`_.
 
 
 
+Unreleased
+==========
+
+Changed
+-------
+- Added pytest coverage report.
+- Increased test coverage to 100%.
+
+
 [v0.2.7] - 2022-08-03
 =====================
 

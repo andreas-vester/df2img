@@ -238,3 +238,7 @@ def test_save_dataframe(df_without_index):
 
     assert filename.is_file()
     filename.unlink()  # delete file
+
+
+def test_show_fig_without_error(df_without_index):
+    fig = df2img.plot_dataframe(df=df_without_index, show_fig=True)
