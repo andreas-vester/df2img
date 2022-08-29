@@ -410,7 +410,7 @@ python-versions = "*"
 
 [[package]]
 name = "ipykernel"
-version = "6.15.1"
+version = "6.15.2"
 description = "IPython Kernel for Jupyter"
 category = "main"
 optional = true
