@@ -1,6 +1,6 @@
 from math import floor
 from pathlib import Path
-from typing import List, Optional, Tuple, Union
+from typing import Any, List, Optional, Tuple, Union
 
 import pandas as pd
 import plotly
@@ -18,7 +18,7 @@ def plot_dataframe(
     fig_size: Optional[Tuple[int, int]] = None,
     show_fig: bool = True,
     plotly_renderer: str = "png",
-    **layout_kwargs,
+    **layout_kwargs: Any,
 ) -> plotly.graph_objects.Figure:
     """Plots a pd.Series or pd.DataFrame.
 
@@ -111,7 +111,7 @@ def plot_dataframe(
 
         return color_list
 
-    def _tbl_values():
+    def _tbl_values() -> Tuple[List[str], pd.Series]:
         if print_index:
             header_values = [
                 "<b>" + x + "<b>"
