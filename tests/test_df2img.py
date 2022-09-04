@@ -8,7 +8,7 @@ import df2img
 
 
 @pytest.fixture(scope="module")
-def df_without_index():
+def df_without_index() -> pd.DataFrame:
     return pd.DataFrame(
         data=dict(
             float_col=[1.4, float("NaN"), 250, 24.65],
@@ -18,7 +18,7 @@ def df_without_index():
 
 
 @pytest.fixture(scope="module")
-def df_with_index_even_row_count():
+def df_with_index_even_row_count() -> pd.DataFrame:
     return pd.DataFrame(
         data=dict(
             float_col=[1.4, float("NaN"), 250, 24.65],
@@ -29,7 +29,7 @@ def df_with_index_even_row_count():
 
 
 @pytest.fixture(scope="module")
-def df_with_index_odd_row_count():
+def df_with_index_odd_row_count() -> pd.DataFrame:
     return pd.DataFrame(
         data=dict(
             float_col=[1.4, float("NaN"), 250, 24.65, 100],
@@ -39,12 +39,12 @@ def df_with_index_odd_row_count():
     )
 
 
-def test_version():
+def test_version() -> None:
     assert df2img.__version__ == "0.2.7"
 
 
 # noinspection PyUnresolvedReferences
-def test_plot_dataframe_without_args(df_without_index):
+def test_plot_dataframe_without_args(df_without_index: pd.DataFrame) -> None:
     fig = df2img.plot_dataframe(df=df_without_index, print_index=False, show_fig=False)
 
     assert isinstance(fig, go.Figure)
@@ -53,7 +53,9 @@ def test_plot_dataframe_without_args(df_without_index):
 
 
 # noinspection PyUnresolvedReferences
-def test_plot_dataframe_without_args_print_index(df_with_index_even_row_count):
+def test_plot_dataframe_without_args_print_index(
+    df_with_index_even_row_count: pd.DataFrame,
+) -> None:
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count, print_index=True, show_fig=False
     )
@@ -63,7 +65,7 @@ def test_plot_dataframe_without_args_print_index(df_with_index_even_row_count):
     assert fig.data[0].header.values == ("<b><b>", "<b>float_col<b>", "<b>str_col<b>")
 
 
-def test_plot_dataframe_title_text(df_with_index_even_row_count):
+def test_plot_dataframe_title_text(df_with_index_even_row_count: pd.DataFrame) -> None:
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         print_index=True,
@@ -86,7 +88,7 @@ def test_plot_dataframe_title_text(df_with_index_even_row_count):
     assert fig.layout.title.xanchor == "right"
 
 
-def test_plot_dataframe_header(df_with_index_even_row_count):
+def test_plot_dataframe_header(df_with_index_even_row_count: pd.DataFrame) -> None:
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         tbl_header=dict(
@@ -110,7 +112,9 @@ def test_plot_dataframe_header(df_with_index_even_row_count):
     assert fig.data[0].header.line.width == 2
 
 
-def test_plot_dataframe_header_invisible(df_with_index_even_row_count):
+def test_plot_dataframe_header_invisible(
+    df_with_index_even_row_count: pd.DataFrame,
+) -> None:
     """
     Tests if `table_header_visible` argument takes really precedence over `tbl_header`.
     """
@@ -136,7 +140,7 @@ def test_plot_dataframe_header_invisible(df_with_index_even_row_count):
     assert fig.data[0].header.height == 1
 
 
-def test_plot_dataframe_cells(df_with_index_even_row_count):
+def test_plot_dataframe_cells(df_with_index_even_row_count: pd.DataFrame) -> None:
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         tbl_cells=dict(
@@ -160,7 +164,9 @@ def test_plot_dataframe_cells(df_with_index_even_row_count):
     assert fig.data[0].cells.line.width == 1.5
 
 
-def test_plot_dataframe_row_fill_color_even_row_count(df_with_index_even_row_count):
+def test_plot_dataframe_row_fill_color_even_row_count(
+    df_with_index_even_row_count: pd.DataFrame,
+) -> None:
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         row_fill_color=("white", "lightgray"),
@@ -175,7 +181,9 @@ def test_plot_dataframe_row_fill_color_even_row_count(df_with_index_even_row_cou
     )
 
 
-def test_plot_dataframe_row_fill_color_odd_row_count(df_with_index_odd_row_count):
+def test_plot_dataframe_row_fill_color_odd_row_count(
+    df_with_index_odd_row_count: pd.DataFrame,
+) -> None:
     fig = df2img.plot_dataframe(
         df=df_with_index_odd_row_count,
         row_fill_color=("white", "lightgray"),
@@ -191,7 +199,7 @@ def test_plot_dataframe_row_fill_color_odd_row_count(df_with_index_odd_row_count
     )
 
 
-def test_plot_dataframe_col_width(df_with_index_even_row_count):
+def test_plot_dataframe_col_width(df_with_index_even_row_count: pd.DataFrame) -> None:
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         col_width=[3, 2, 1],
@@ -201,7 +209,7 @@ def test_plot_dataframe_col_width(df_with_index_even_row_count):
     assert fig.data[0].columnwidth == (3, 2, 1)
 
 
-def test_plot_dataframe_fig_size(df_with_index_even_row_count):
+def test_plot_dataframe_fig_size(df_with_index_even_row_count: pd.DataFrame) -> None:
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         fig_size=(400, 200),
@@ -212,7 +220,9 @@ def test_plot_dataframe_fig_size(df_with_index_even_row_count):
     assert fig.layout.height == 200
 
 
-def test_plot_dataframe_paper_bgcolor(df_with_index_even_row_count):
+def test_plot_dataframe_paper_bgcolor(
+    df_with_index_even_row_count: pd.DataFrame,
+) -> None:
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         paper_bgcolor="rgba(0, 0, 0, 0)",
@@ -230,7 +240,7 @@ def test_plot_dataframe_paper_bgcolor(df_with_index_even_row_count):
     assert fig.layout.paper_bgcolor == "yellow"
 
 
-def test_save_dataframe(df_without_index):
+def test_save_dataframe(df_without_index: pd.DataFrame) -> None:
     fig = df2img.plot_dataframe(df=df_without_index, show_fig=False)
 
     filename = Path(__file__).parent.joinpath("testfile.png")
@@ -240,5 +250,5 @@ def test_save_dataframe(df_without_index):
     filename.unlink()  # delete file
 
 
-def test_show_fig_without_error(df_without_index):
+def test_show_fig_without_error(df_without_index: pd.DataFrame) -> None:
     df2img.plot_dataframe(df=df_without_index, show_fig=True)

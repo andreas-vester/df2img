@@ -45,6 +45,7 @@ autoflake = "^1.5.3"
 black = "^22.3.0"
 esbonio = "^0.13.0"
 flake8 = "^5.0.0"
+flake8-annotations = "^2.9.1"
 flake8-bandit = "^4.1.1"
 flake8-black = "^0.3.3"
 flake8-bugbear = "^22.8.23"
@@ -77,6 +78,9 @@ source = ["df2img"]
 [tool.coverage.report]
 show_missing = true
 fail_under = 100
+
+[tool.mypy]
+ignore_missing_imports = true
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
