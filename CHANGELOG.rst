@@ -10,9 +10,16 @@ This project adheres to `Semantic Versioning <https://semver.org/>`_.
 Unreleased
 ==========
 
+Added
+-----
+- ``nox``
+  - Unit testing using pytest
+  - Added pytest coverage report.
+  - Linting using `flake8 <https://flake8.pycqa.org/en/latest/>`_.
+  - Formatting using `black <https://black.readthedocs.io/en/stable/>`_.
+
 Changed
 -------
-- Added pytest coverage report.
 - Increased test coverage to 100%.
 
 

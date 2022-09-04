@@ -241,4 +241,4 @@ def test_save_dataframe(df_without_index):
 
 
 def test_show_fig_without_error(df_without_index):
-    fig = df2img.plot_dataframe(df=df_without_index, show_fig=True)
+    df2img.plot_dataframe(df=df_without_index, show_fig=True)
