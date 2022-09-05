@@ -413,6 +413,18 @@ flake8 = ">=3.0.0"
 dev = ["coverage", "hypothesis", "hypothesmith (>=0.2)", "pre-commit"]
 
 [[package]]
+name = "flake8-docstrings"
+version = "1.6.0"
+description = "Extension for flake8 which uses pydocstyle to check docstrings"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+flake8 = ">=3"
+pydocstyle = ">=2.1"
+
+[[package]]
 name = "flake8-isort"
 version = "4.2.0"
 description = "flake8 plugin that integrates isort ."
@@ -1173,6 +1185,20 @@ dotenv = ["python-dotenv (>=0.10.4)"]
 email = ["email-validator (>=1.0.3)"]
 
 [[package]]
+name = "pydocstyle"
+version = "6.1.1"
+description = "Python docstring style checker"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+snowballstemmer = "*"
+
+[package.extras]
+toml = ["toml"]
+
+[[package]]
 name = "pyflakes"
 version = "2.5.0"
 description = "passive checker of Python programs"
@@ -1683,7 +1709,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "17d0e0ece3247df80ee8230887b6dd4921ad11dbdc65c9bb3ca576485025b872"
+content-hash = "f360421164b62200aa4855a6f4044501a1d235a8e50b3fc892fe0c6cfde243ce"
 
 [metadata.files]
 alabaster = [
@@ -1976,6 +2002,10 @@ flake8-black = [
 flake8-bugbear = [
     {file = "flake8-bugbear-22.8.23.tar.gz", hash = "sha256:de0717d11124a082118dd08387b34fd86b2721642ec2d8e92be66cfa5ea7c445"},
     {file = "flake8_bugbear-22.8.23-py3-none-any.whl", hash = "sha256:1b0ebe0873d1cd55bf9f1588bfcb930db339018ef44a3981a26532daa9fd14a8"},
+]
+flake8-docstrings = [
+    {file = "flake8-docstrings-1.6.0.tar.gz", hash = "sha256:9fe7c6a306064af8e62a055c2f61e9eb1da55f84bb39caef2b84ce53708ac34b"},
+    {file = "flake8_docstrings-1.6.0-py2.py3-none-any.whl", hash = "sha256:99cac583d6c7e32dd28bbfbef120a7c0d1b6dde4adb5a9fd441c4227a6534bde"},
 ]
 flake8-isort = [
     {file = "flake8-isort-4.2.0.tar.gz", hash = "sha256:26571500cd54976bbc0cf1006ffbcd1a68dd102f816b7a1051b219616ba9fee0"},
@@ -2438,6 +2468,10 @@ pydantic = [
     {file = "pydantic-1.8.2-cp39-cp39-win_amd64.whl", hash = "sha256:4be75bebf676a5f0f87937c6ddb061fa39cbea067240d98e298508c1bda6f3f3"},
     {file = "pydantic-1.8.2-py3-none-any.whl", hash = "sha256:fec866a0b59f372b7e776f2d7308511784dace622e0992a0b59ea3ccee0ae833"},
     {file = "pydantic-1.8.2.tar.gz", hash = "sha256:26464e57ccaafe72b7ad156fdaa4e9b9ef051f69e175dbbb463283000c05ab7b"},
+]
+pydocstyle = [
+    {file = "pydocstyle-6.1.1-py3-none-any.whl", hash = "sha256:6987826d6775056839940041beef5c08cc7e3d71d63149b48e36727f70144dc4"},
+    {file = "pydocstyle-6.1.1.tar.gz", hash = "sha256:1d41b7c459ba0ee6c345f2eb9ae827cab14a7533a88c5c6f7e94923f72df92dc"},
 ]
 pyflakes = [
     {file = "pyflakes-2.5.0-py2.py3-none-any.whl", hash = "sha256:4579f67d887f804e67edb544428f264b7b24f435b263c4614f384135cea553d2"},

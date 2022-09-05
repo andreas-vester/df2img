@@ -1,3 +1,5 @@
+"""Collection of functions to plot and save a `pd.DataFrame`."""
+
 from math import floor
 from pathlib import Path
 from typing import Any, List, Optional, Tuple, Union
@@ -20,16 +22,17 @@ def plot_dataframe(
     plotly_renderer: str = "png",
     **layout_kwargs: Any,
 ) -> plotly.graph_objects.Figure:
-    """Plots a pd.Series or pd.DataFrame.
+    """
+    Plot a pd.Series or pd.DataFrame.
 
     Parameters
     ----------
-    df : Union[pd.Series, pd.DataFrame]
+    df
         Series or dataframe to be plotted.
-    print_index : bool, default True
+    print_index
         If `True`, prints the dataframe's index. `df.index.name` will become the index
         column header.
-    title : dict, default None
+    title
         A dict possibly containing `plotly` key/value pairs:
         https://plotly.com/python/reference/layout/#layout-title
 
@@ -51,10 +54,10 @@ def plot_dataframe(
           at x and "center" means that the title's center is at x. "auto" divides
           `xref` by three and calculates the `xanchor` value automatically based on
           the value of `x`.
-    tbl_header_visible : bool, default True,
+    tbl_header_visible
         If `False`, table header will be invisible. Takes precedence over `tbl_header`
         argument.
-    tbl_header, tbl_cells : dict, default None
+    tbl_header, tbl_cells
         A dict possibly containing `plotly` key/value pairs:
         https://plotly.com/python/reference/table/#table-header
         https://plotly.com/python/reference/table/#table-cells
@@ -69,17 +72,17 @@ def plot_dataframe(
         - font_size : number or array of numbers greater than or equal to 1
         - height : number, default 28
         - line_width : number or array of numbers, default 1
-    row_fill_color : Tuple[str, str], default None
+    row_fill_color
         Tuple of colors that will be used to alternate row colors. Takes precedence
         over `tbl_cells["fill_color"]`.
-    col_width : number or array of numbers, default None
+    col_width
         The width of columns expressed as a ratio. Columns fill the available width
         in proportion of their specified column widths.
-    fig_size : Tuple[int, int], default None
+    fig_size
         Tuple specifying the `width` and `height` of the figure.
-    show_fig : bool, default True
+    show_fig
         If True, plot will be displayed.
-    plotly_renderer : str, default "png"
+    plotly_renderer
         Option to specify how and where to display the figure. See
         https://plotly.com/python/renderers/ for further information.
     **layout_kwargs
@@ -177,18 +180,20 @@ def plot_dataframe(
 
 
 def save_dataframe(fig: plotly.graph_objects.Figure, filename: Path) -> None:
-    """Writes `plotly` figure to disk.
+    """
+    Write `plotly` figure to disk.
 
     Parameters
     ----------
-    fig : plotly.graph_objects.Figure
+    fig
         Figure object to save.
-    filename : Path
+    filename
         Filename including path where to save figure.
 
     Returns
     -------
     None
+
     """
     fig.write_image(filename)
 

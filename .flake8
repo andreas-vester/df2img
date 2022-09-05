@@ -1,8 +1,9 @@
 [flake8]
-select = ANN, B, B9, BLK, C, E, F, I, S, W
+select = ANN, B, B9, BLK, C, D, E, F, I, S, W
 ignore = ANN401, E203, E501, W503
 # B950 checks the maximum line length like the built-in E501, but with a tolerance
 # margin of 10%. Set the maximum line length to a sane value, i.e. 80.
 max-line-length = 80
 max-complexity = 15
 per-file-ignores = tests/*:S101
+docstring-convention = numpy
