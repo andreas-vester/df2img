@@ -1,3 +1,5 @@
+"""Test functions in df2img.py."""
+
 from pathlib import Path
 
 import pandas as pd
@@ -9,6 +11,7 @@ import df2img
 
 @pytest.fixture(scope="module")
 def df_without_index() -> pd.DataFrame:
+    """Return `pd.DataFrame` with string and float columns without index column."""
     return pd.DataFrame(
         data=dict(
             float_col=[1.4, float("NaN"), 250, 24.65],
@@ -19,6 +22,7 @@ def df_without_index() -> pd.DataFrame:
 
 @pytest.fixture(scope="module")
 def df_with_index_even_row_count() -> pd.DataFrame:
+    """Return `pd.DataFrame` with an even number (4) of rows."""
     return pd.DataFrame(
         data=dict(
             float_col=[1.4, float("NaN"), 250, 24.65],
@@ -30,6 +34,7 @@ def df_with_index_even_row_count() -> pd.DataFrame:
 
 @pytest.fixture(scope="module")
 def df_with_index_odd_row_count() -> pd.DataFrame:
+    """Return `pd.DataFrame` with an odd number (5) of rows."""
     return pd.DataFrame(
         data=dict(
             float_col=[1.4, float("NaN"), 250, 24.65, 100],
@@ -40,11 +45,13 @@ def df_with_index_odd_row_count() -> pd.DataFrame:
 
 
 def test_version() -> None:
+    """It checks the correct version number."""
     assert df2img.__version__ == "0.2.7"
 
 
 # noinspection PyUnresolvedReferences
 def test_plot_dataframe_without_args(df_without_index: pd.DataFrame) -> None:
+    """It plots a dataframe without providing any additional arguments."""
     fig = df2img.plot_dataframe(df=df_without_index, print_index=False, show_fig=False)
 
     assert isinstance(fig, go.Figure)
@@ -56,6 +63,7 @@ def test_plot_dataframe_without_args(df_without_index: pd.DataFrame) -> None:
 def test_plot_dataframe_without_args_print_index(
     df_with_index_even_row_count: pd.DataFrame,
 ) -> None:
+    """It plots a dataframe with the index column."""
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count, print_index=True, show_fig=False
     )
@@ -66,6 +74,7 @@ def test_plot_dataframe_without_args_print_index(
 
 
 def test_plot_dataframe_title_text(df_with_index_even_row_count: pd.DataFrame) -> None:
+    """It plots a dataframe with a title."""
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         print_index=True,
@@ -89,6 +98,7 @@ def test_plot_dataframe_title_text(df_with_index_even_row_count: pd.DataFrame) -
 
 
 def test_plot_dataframe_header(df_with_index_even_row_count: pd.DataFrame) -> None:
+    """It plots a dataframe with formatted column headers."""
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         tbl_header=dict(
@@ -115,9 +125,7 @@ def test_plot_dataframe_header(df_with_index_even_row_count: pd.DataFrame) -> No
 def test_plot_dataframe_header_invisible(
     df_with_index_even_row_count: pd.DataFrame,
 ) -> None:
-    """
-    Tests if `table_header_visible` argument takes really precedence over `tbl_header`.
-    """
+    """`table_header_visible` argument takes precedence over `tbl_header`."""
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         tbl_header_visible=False,
@@ -141,6 +149,7 @@ def test_plot_dataframe_header_invisible(
 
 
 def test_plot_dataframe_cells(df_with_index_even_row_count: pd.DataFrame) -> None:
+    """It plots a dataframe with formatted cells."""
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         tbl_cells=dict(
@@ -167,6 +176,7 @@ def test_plot_dataframe_cells(df_with_index_even_row_count: pd.DataFrame) -> Non
 def test_plot_dataframe_row_fill_color_even_row_count(
     df_with_index_even_row_count: pd.DataFrame,
 ) -> None:
+    """It plots a dataframe with even row numbers with alternating row colors."""
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         row_fill_color=("white", "lightgray"),
@@ -184,6 +194,7 @@ def test_plot_dataframe_row_fill_color_even_row_count(
 def test_plot_dataframe_row_fill_color_odd_row_count(
     df_with_index_odd_row_count: pd.DataFrame,
 ) -> None:
+    """It plots a dataframe with odd row numbers with alternating row colors."""
     fig = df2img.plot_dataframe(
         df=df_with_index_odd_row_count,
         row_fill_color=("white", "lightgray"),
@@ -200,6 +211,7 @@ def test_plot_dataframe_row_fill_color_odd_row_count(
 
 
 def test_plot_dataframe_col_width(df_with_index_even_row_count: pd.DataFrame) -> None:
+    """It plots a dataframe with different column widths."""
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         col_width=[3, 2, 1],
@@ -210,6 +222,7 @@ def test_plot_dataframe_col_width(df_with_index_even_row_count: pd.DataFrame) ->
 
 
 def test_plot_dataframe_fig_size(df_with_index_even_row_count: pd.DataFrame) -> None:
+    """It plots a dataframe with specified figure size."""
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         fig_size=(400, 200),
@@ -220,9 +233,10 @@ def test_plot_dataframe_fig_size(df_with_index_even_row_count: pd.DataFrame) -> 
     assert fig.layout.height == 200
 
 
-def test_plot_dataframe_paper_bgcolor(
+def test_plot_dataframe_paper_bgcolor_rgba(
     df_with_index_even_row_count: pd.DataFrame,
 ) -> None:
+    """It plots a dataframe with background color specified as RGB values."""
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         paper_bgcolor="rgba(0, 0, 0, 0)",
@@ -231,6 +245,11 @@ def test_plot_dataframe_paper_bgcolor(
 
     assert fig.layout.paper_bgcolor == "rgba(0, 0, 0, 0)"
 
+
+def test_plot_dataframe_paper_bgcolor_string(
+    df_with_index_even_row_count: pd.DataFrame,
+) -> None:
+    """It plots a dataframe with background color specified as string value."""
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         paper_bgcolor="yellow",
@@ -241,6 +260,7 @@ def test_plot_dataframe_paper_bgcolor(
 
 
 def test_save_dataframe(df_without_index: pd.DataFrame) -> None:
+    """It saves a dataframe as 'testfile.png'."""
     fig = df2img.plot_dataframe(df=df_without_index, show_fig=False)
 
     filename = Path(__file__).parent.joinpath("testfile.png")
@@ -251,4 +271,5 @@ def test_save_dataframe(df_without_index: pd.DataFrame) -> None:
 
 
 def test_show_fig_without_error(df_without_index: pd.DataFrame) -> None:
+    """It shows the figure using the default renderer."""
     df2img.plot_dataframe(df=df_without_index, show_fig=True)

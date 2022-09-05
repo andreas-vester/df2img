@@ -54,6 +54,7 @@ isort = "^5.10.1"
 mypy = "^0.960"
 nox = "^2022.8.7"
 pre-commit = "^2.19.0"
+flake8-docstrings = "^1.6.0"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.1.2"
