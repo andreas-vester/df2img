@@ -26,7 +26,7 @@ It is a wrapper/convenience function in order to create a ``plotly`` Table. That
 
 ## Documentation
 
-An extensive documentation is available at https://df2img.readthedocs.io/.
+An extensive documentation is available at https://df2img.dev.
 
 
 ## Quickstart
