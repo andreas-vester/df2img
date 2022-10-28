@@ -1,0 +1,51 @@
+site_name: "df2img"
+repo_url: https://github.com/andreas-vester/df2img
+site_author: "Andreas Vester"
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Getting started: getting_started.ipynb
+  - Controlling the index column: control_index.ipynb
+  - Formatting: formatting.ipynb
+  - API Reference: api_reference.md
+  - Changelog: changelog.md
+
+markdown_extensions:
+  - pymdownx.snippets
+
+plugins:
+  - mkdocs-jupyter:
+      execute: false
+      allow_errors: false
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: [src] # search packages in the src folder
+          options:
+            heading_level: 3
+            show_root_heading: false
+            show_root_toc_entry: false
+            show_source: false
+            docstring_style: numpy
+            docstring_section_style: table # {table, list, spacy}
+            separate_signature: true
+
+watch:
+  - src/df2img
+  - CHANGELOG.md
+  - README.md

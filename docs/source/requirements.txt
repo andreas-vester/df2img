@@ -1,5 +1,0 @@
-ipython
-jupyter
-nbsphinx
-numpydoc
-sphinx-copybutton

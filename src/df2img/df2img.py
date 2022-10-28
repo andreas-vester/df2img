@@ -34,7 +34,8 @@ def plot_dataframe(
         column header.
     title
         A dict possibly containing `plotly` key/value pairs:
-        https://plotly.com/python/reference/layout/#layout-title
+
+        [https://plotly.com/python/reference/layout/#layout-title](https://plotly.com/python/reference/layout/#layout-title)
 
         More relevant key/value pairs:
 
@@ -44,8 +45,9 @@ def plot_dataframe(
         - text : str
         - x : number between or equal to 0 and 1, default 0.5
 
-          Sets the x position with respect to `xref` in normalized coordinates
-          from "0" (left) to "1" (right).
+          Sets the x position with respect to `xref` in normalized coordinates from
+          "0" (left) to "1" (right).
+
         - xanchor : enumerated, one of ("auto", "left", "center", "right"),
           default "auto"
 
@@ -59,8 +61,10 @@ def plot_dataframe(
         argument.
     tbl_header, tbl_cells
         A dict possibly containing `plotly` key/value pairs:
-        https://plotly.com/python/reference/table/#table-header
-        https://plotly.com/python/reference/table/#table-cells
+
+        [https://plotly.com/python/reference/table/#table-header](https://plotly.com/python/reference/table/#table-header)
+
+        [https://plotly.com/python/reference/table/#table-cells](https://plotly.com/python/reference/table/#table-cells)
 
         More relevant key/value pairs:
 
@@ -84,11 +88,12 @@ def plot_dataframe(
         If True, plot will be displayed.
     plotly_renderer
         Option to specify how and where to display the figure. See
-        https://plotly.com/python/renderers/ for further information.
+        [https://plotly.com/python/renderers/](https://plotly.com/python/renderers/)
+        for further information.
     **layout_kwargs
         Plotly accepts a large number of layout-related keyword arguments.
         A detailed descriptions is available at
-        https://plotly.com/python-api-reference/generated/plotly.graph_objects.Layout.html.
+        [https://plotly.com/python-api-reference/generated/plotly.graph_objects.Layout.html](https://plotly.com/python-api-reference/generated/plotly.graph_objects.Layout.html).
 
     Returns
     -------
