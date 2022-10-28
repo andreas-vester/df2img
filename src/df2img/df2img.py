@@ -139,7 +139,7 @@ def plot_dataframe(
     header_vals, cell_vals = _tbl_values()
 
     if not tbl_header:
-        tbl_header = dict()
+        tbl_header = {}
     tbl_header.update(values=header_vals)
 
     if not tbl_header_visible:
@@ -148,7 +148,7 @@ def plot_dataframe(
         )
 
     if not tbl_cells:
-        tbl_cells = dict()
+        tbl_cells = {}
     tbl_cells.update(
         values=cell_vals,
         fill_color=[row_color_list] * len(df)
@@ -163,7 +163,7 @@ def plot_dataframe(
     fig.data[0]["columnwidth"] = col_width if col_width else None
 
     if not title:
-        title = dict()
+        title = {}
     title.update(
         x=0.01 if title.get("x") is None else title.get("x"),
         xanchor="left" if title.get("xanchor") is None else title.get("xanchor"),
@@ -171,7 +171,13 @@ def plot_dataframe(
 
     fig.update_layout(
         title=title,
-        margin=dict(autoexpand=False, b=5, l=5, r=5, t=40 if title.get("text") else 5),
+        margin={
+            "autoexpand": False,
+            "b": 5,
+            "l": 5,
+            "r": 5,
+            "t": 40 if title.get("text") else 5,
+        },
         width=fig_size[0] if fig_size else None,
         height=fig_size[1] if fig_size else None,
         autosize=False if col_width else None,

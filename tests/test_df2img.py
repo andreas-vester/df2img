@@ -13,10 +13,10 @@ import df2img
 def df_without_index() -> pd.DataFrame:
     """Return `pd.DataFrame` with string and float columns without index column."""
     return pd.DataFrame(
-        data=dict(
-            float_col=[1.4, float("NaN"), 250, 24.65],
-            str_col=("string1", "string2", float("NaN"), "string4"),
-        ),
+        data={
+            "float_col": [1.4, float("NaN"), 250, 24.65],
+            "str_col": ("string1", "string2", float("NaN"), "string4"),
+        },
     )
 
 
@@ -24,10 +24,10 @@ def df_without_index() -> pd.DataFrame:
 def df_with_index_even_row_count() -> pd.DataFrame:
     """Return `pd.DataFrame` with an even number (4) of rows."""
     return pd.DataFrame(
-        data=dict(
-            float_col=[1.4, float("NaN"), 250, 24.65],
-            str_col=("string1", "string2", float("NaN"), "string4"),
-        ),
+        data={
+            "float_col": [1.4, float("NaN"), 250, 24.65],
+            "str_col": ("string1", "string2", float("NaN"), "string4"),
+        },
         index=["row1", "row2", "row3_with_a_long_string", "row4"],
     )
 
@@ -36,10 +36,10 @@ def df_with_index_even_row_count() -> pd.DataFrame:
 def df_with_index_odd_row_count() -> pd.DataFrame:
     """Return `pd.DataFrame` with an odd number (5) of rows."""
     return pd.DataFrame(
-        data=dict(
-            float_col=[1.4, float("NaN"), 250, 24.65, 100],
-            str_col=("string1", "string2", float("NaN"), "string4", "last_string"),
-        ),
+        data={
+            "float_col": [1.4, float("NaN"), 250, 24.65, 100],
+            "str_col": ("string1", "string2", float("NaN"), "string4", "last_string"),
+        },
         index=["row1", "row2", "row3_with_a_long_string", "row4", "last_row"],
     )
 
@@ -78,14 +78,14 @@ def test_plot_dataframe_title_text(df_with_index_even_row_count: pd.DataFrame) -
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         print_index=True,
-        title=dict(
-            font_color="red",
-            font_family="Arial",
-            font_size=20,
-            text="This is a title",
-            x=0.1,
-            xanchor="right",
-        ),
+        title={
+            "font_color": "red",
+            "font_family": "Arial",
+            "font_size": 20,
+            "text": "This is a title",
+            "x": 0.1,
+            "xanchor": "right",
+        },
         show_fig=False,
     )
 
@@ -101,15 +101,15 @@ def test_plot_dataframe_header(df_with_index_even_row_count: pd.DataFrame) -> No
     """It plots a dataframe with formatted column headers."""
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
-        tbl_header=dict(
-            align="right",
-            fill_color="blue",
-            font_color="white",
-            font_family="Arial",
-            font_size=14,
-            height=20,
-            line_width=2,
-        ),
+        tbl_header={
+            "align": "right",
+            "fill_color": "blue",
+            "font_color": "white",
+            "font_family": "Arial",
+            "font_size": 14,
+            "height": 20,
+            "line_width": 2,
+        },
         show_fig=False,
     )
 
@@ -129,16 +129,16 @@ def test_plot_dataframe_header_invisible(
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
         tbl_header_visible=False,
-        tbl_header=dict(
-            align="right",
-            fill_color="blue",
-            font_color="black",
-            line_color="gray",
-            font_family="Arial",
-            font_size=14,
-            height=100,
-            line_width=2,
-        ),
+        tbl_header={
+            "align": "right",
+            "fill_color": "blue",
+            "font_color": "black",
+            "line_color": "gray",
+            "font_family": "Arial",
+            "font_size": 14,
+            "height": 100,
+            "line_width": 2,
+        },
         show_fig=False,
     )
 
@@ -152,15 +152,15 @@ def test_plot_dataframe_cells(df_with_index_even_row_count: pd.DataFrame) -> Non
     """It plots a dataframe with formatted cells."""
     fig = df2img.plot_dataframe(
         df=df_with_index_even_row_count,
-        tbl_cells=dict(
-            align="left",
-            fill_color="darkred",
-            font_color="lightblue",
-            font_family="Times New Roman",
-            font_size=10,
-            height=30,
-            line_width=1.5,
-        ),
+        tbl_cells={
+            "align": "left",
+            "fill_color": "darkred",
+            "font_color": "lightblue",
+            "font_family": "Times New Roman",
+            "font_size": 10,
+            "height": 30,
+            "line_width": 1.5,
+        },
         show_fig=False,
     )
 
