@@ -5,13 +5,16 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.2.8] - 2022-11-01
 ### Improved
 - Introduce **Contributing** section and **Code of conduct** to documentation.
-- ``nox``
+- Using [nox](https://nox.thea.codes/) for testing:
     - Unit testing using pytest
     - Added pytest coverage report.
     - Linting using [flake8](https://flake8.pycqa.org/en/latest/).
     - Formatting using [black](https://black.readthedocs.io/en/stable/).
+    - Type checking using [mypy](http://mypy-lang.org/)
 - Increased test coverage to 100%.
 - Use [python-kacl](https://pypi.org/project/python-kacl/) to maintain CHANGELOG.md.
 
@@ -112,7 +115,8 @@ For more information about ``plotly``'s renderers, visit the respective website 
 - Possibility to change column width and row height.
 - Possibility to change font size.
 
-[Unreleased]: https://github.com/andreas-vester/df2img/compare/v0.2.7...HEAD
+[Unreleased]: https://github.com/andreas-vester/df2img/compare/0.2.8...HEAD
+[0.2.8]: https://github.com/andreas-vester/df2img/compare/v0.2.7...v0.2.8
 [0.2.7]: https://github.com/andreas-vester/df2img/compare/v0.2.6...v0.2.7
 [0.2.6]: https://github.com/andreas-vester/df2img/compare/v0.2.5...v0.2.6
 [0.2.5]: https://github.com/andreas-vester/df2img/compare/v0.2.4...v0.2.5

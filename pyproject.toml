@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "df2img"
-version = "0.2.7"
+version = "0.2.8"
 description = "Save a Pandas DataFrame as image"
 license = "MIT"
-authors = ["Andreas Vester <andreas@vester-online.de>"]
+authors = ["Andreas Vester <info@df2img.dev>"]
 readme = "README.md"
-homepage = "https://github.com/andreas-vester/df2img"
+homepage = "https://df2img.dev"
 repository = "https://github.com/andreas-vester/df2img"
-documentation = "https://df2img.readthedocs.io"
+documentation = "https://df2img.dev"
 keywords = ["pandas", "dataframe", "image"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -18,10 +18,12 @@ classifiers = [
 include = [
     "CHANGELOG.md",
     "LICENSE",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
 ]
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://github.com/andreas-vester/df2img/issues"
+"Bug Tracker" = "https://github.com/andreas-vester/df2img/issues?q=label%3Abug+"
 
 [tool.poetry.dependencies]
 python = "^3.8"
