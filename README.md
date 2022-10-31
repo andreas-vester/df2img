@@ -172,4 +172,4 @@ fig = df2img.plot_dataframe(
 
 ## Contributing to df2img
 
-All bug reports and bug fixes, improvements to the documentation, or general ideas are welcome. Simply open an [issue](https://github.com/andreas-vester/df2img/issues).
+If you consider to contribute to _df2img_, please read the [Contributing to _df2img_](./CONTRIBUTING.md) section in the documentation. This document is supposed to guide you through the whole process.

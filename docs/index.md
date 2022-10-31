@@ -30,8 +30,10 @@ It is a wrapper/convenience function in order to create a ``plotly`` Table. That
 * [Controlling the index column](control_index.ipynb)
 * [Formatting](formatting.ipynb)
 * [API Reference](api_reference.md)
+* [Contributing](contributing.md)
+* [Code of conduct](code_of_conduct.md)
 * [Changelog](changelog.md)
 
 ## Contributing to df2img
 
-All bug reports and bug fixes, improvements to the documentation, or general ideas are welcome. Simply open an [issue](https://github.com/andreas-vester/df2img/issues).
+If you consider to contribute to **df2img**, please read the [Contributing to df2img](./contributing.md) section in the documentation. This document is supposed to guide you through the whole process.
