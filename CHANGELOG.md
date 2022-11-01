@@ -6,11 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Improved
+- Introduce **Contributing** section and **Code of conduct** to documentation.
 - ``nox``
-  - Unit testing using pytest
-  - Added pytest coverage report.
-  - Linting using [flake8](https://flake8.pycqa.org/en/latest/).
-  - Formatting using [black](https://black.readthedocs.io/en/stable/).
+    - Unit testing using pytest
+    - Added pytest coverage report.
+    - Linting using [flake8](https://flake8.pycqa.org/en/latest/).
+    - Formatting using [black](https://black.readthedocs.io/en/stable/).
 - Increased test coverage to 100%.
 - Use [python-kacl](https://pypi.org/project/python-kacl/) to maintain CHANGELOG.md.
 
