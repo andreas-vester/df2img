@@ -172,4 +172,4 @@ fig = df2img.plot_dataframe(
 
 ## Contributing to df2img
 
-If you consider to contribute to _df2img_, please read the [Contributing to _df2img_](./CONTRIBUTING.md) section in the documentation. This document is supposed to guide you through the whole process.
+If you consider to contribute to **df2img**, please read the [Contributing to df2img](./CONTRIBUTING.md) section in the documentation. This document is supposed to guide you through the whole process.

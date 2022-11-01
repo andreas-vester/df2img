@@ -7,8 +7,8 @@ import nox
 from nox.sessions import Session
 
 locations = "src", "tests", "./noxfile.py"
-nox.options.sessions = "pre-commit", "tests"
-python_versions = ["3.11", "3.10", "3.9", "3.8"]
+nox.options.sessions = "pre-commit", "tests", "mypy"
+python_versions = ["3.8", "3.9", "3.10", "3.11"]
 
 
 def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> None:
@@ -52,7 +52,7 @@ def tests(session: Session) -> None:
     session.run("pytest", *args)
 
 
-@nox.session(name="pre-commit", python=python_versions[0])
+@nox.session(name="pre-commit", python=python_versions[-1])
 def precommit(session: Session) -> None:
     """Lint using pre-commit."""
     args = session.posargs or [
