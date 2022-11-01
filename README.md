@@ -79,7 +79,7 @@ fig = df2img.plot_dataframe(df, fig_size=(500, 140))
 df2img.save_dataframe(fig=fig, filename="plot1.png")
 ```
 
-![img](./docs/img/plot1.png)
+![img](https://github.com/andreas-vester/df2img/blob/main/docs/img/plot1.png?raw=true)
 
 
 ### Formatting
@@ -100,7 +100,7 @@ fig = df2img.plot_dataframe(
     fig_size=(500, 140),
 )
 ```
-![img](./docs/img/plot2.png)
+![img](https://github.com/andreas-vester/df2img/blob/main/docs/img/plot2.png?raw=true)
 
 
 Controlling the table body (cells) is basically the same. Just use the ``tbl_cells`` input argument, which happens to be a ``dict``, too.
@@ -120,7 +120,7 @@ fig = df2img.plot_dataframe(
 )
 ```
 
-![img](./docs/img/plot3.png)
+![img](https://github.com/andreas-vester/df2img/blob/main/docs/img/plot3.png?raw=true)
 
 
 You can alternate row colors for better readability by using the ``row_fill_color`` input argument. Using HEX colors is also possible:
@@ -133,7 +133,7 @@ fig = df2img.plot_dataframe(
 )
 ```
 
-![img](./docs/img/plot4.png)
+![img](https://github.com/andreas-vester/df2img/blob/main/docs/img/plot4.png?raw=true)
 
 
 Setting the title will be controlled via the ``title`` input argument. You can find the relevant key/value pairs here: https://plotly.com/python/reference/layout/#layout-title.
@@ -155,7 +155,7 @@ Let's put the title in a different font and size. In addition, we can control th
   )
   ```
 
-![img](./docs/img/plot5.png)
+![img](https://github.com/andreas-vester/df2img/blob/main/docs/img/plot5.png?raw=true)
 
 
 You can also control relative column width via the ``col_width`` argument. Let's set the first column's width triple the width of the third column and the second column's width double the width of the third column.
@@ -168,7 +168,7 @@ fig = df2img.plot_dataframe(
 )
 ```
 
-![img](./docs/img/plot6.png)
+![img](https://github.com/andreas-vester/df2img/blob/main/docs/img/plot6.png?raw=true)
 
 ## Contributing to df2img
 
