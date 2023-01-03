@@ -46,7 +46,7 @@ def df_with_index_odd_row_count() -> pd.DataFrame:
 
 def test_version() -> None:
     """It checks the correct version number."""
-    assert df2img.__version__ == "0.2.7"
+    assert df2img.__version__ == "0.2.9"
 
 
 # noinspection PyUnresolvedReferences

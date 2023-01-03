@@ -1,4 +1,3 @@
-!-- omit in toc -->
 # Contributing to df2img
 
 First off, thanks for taking the time to contribute! ❤️
