@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.2.10] - 2023-04-05
 ### Improved
 - Transitioned from [flake8](https://pypi.org/project/flake8/) to [ruff](https://pypi.org/project/ruff/).
 
@@ -123,7 +125,8 @@ For more information about ``plotly``'s renderers, visit the respective website 
 - Possibility to change column width and row height.
 - Possibility to change font size.
 
-[Unreleased]: https://github.com/andreas-vester/df2img/compare/0.2.9...main
+[Unreleased]: https://github.com/andreas-vester/df2img/compare/v0.2.10...HEAD
+[0.2.10]: https://github.com/andreas-vester/df2img/compare/v0.2.9...v0.2.10
 [0.2.9]: https://github.com/andreas-vester/df2img/compare/0.2.8...0.2.9
 [0.2.8]: https://github.com/andreas-vester/df2img/compare/v0.2.7...v0.2.8
 [0.2.7]: https://github.com/andreas-vester/df2img/compare/v0.2.6...v0.2.7
