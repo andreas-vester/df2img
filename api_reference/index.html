@@ -538,7 +538,7 @@
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="typing.Union">Union</span>[<span title="pandas">pd</span>.<span title="pandas.Series">Series</span>, <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span>]</code>
+                <code><span title="pandas">pd</span>.<span title="pandas.Series">Series</span> | <span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td><p>Series or dataframe to be plotted.</p></td>
           <td>
@@ -559,7 +559,7 @@ column header.</p></td>
         <tr>
           <td><code>title</code></td>
           <td>
-                <code><span title="typing.Optional">Optional</span>[dict]</code>
+                <code>dict | None</code>
           </td>
           <td><p>A dict possibly containing <code>plotly</code> key/value pairs:</p>
 <p><a href="https://plotly.com/python/reference/layout/#layout-title">https://plotly.com/python/reference/layout/#layout-title</a></p>
@@ -600,7 +600,7 @@ argument.</p></td>
         <tr>
           <td><code>tbl_header</code></td>
           <td>
-                <code><span title="typing.Optional">Optional</span>[dict]</code>
+                <code>dict | None</code>
           </td>
           <td><p>A dict possibly containing <code>plotly</code> key/value pairs:</p>
 <p><a href="https://plotly.com/python/reference/table/#table-header">https://plotly.com/python/reference/table/#table-header</a></p>
@@ -623,7 +623,7 @@ one of ("left", "center", "right"), default "center"</li>
         <tr>
           <td><code>tbl_cells</code></td>
           <td>
-                <code><span title="typing.Optional">Optional</span>[dict]</code>
+                <code>dict | None</code>
           </td>
           <td><p>A dict possibly containing <code>plotly</code> key/value pairs:</p>
 <p><a href="https://plotly.com/python/reference/table/#table-header">https://plotly.com/python/reference/table/#table-header</a></p>
@@ -646,7 +646,7 @@ one of ("left", "center", "right"), default "center"</li>
         <tr>
           <td><code>row_fill_color</code></td>
           <td>
-                <code><span title="typing.Optional">Optional</span>[<span title="typing.Tuple">Tuple</span>[str, str]]</code>
+                <code>tuple[str, str] | None</code>
           </td>
           <td><p>Tuple of colors that will be used to alternate row colors. Takes precedence
 over <code>tbl_cells["fill_color"]</code>.</p></td>
@@ -657,7 +657,7 @@ over <code>tbl_cells["fill_color"]</code>.</p></td>
         <tr>
           <td><code>col_width</code></td>
           <td>
-                <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[int, float, <span title="typing.List">List</span>[<span title="typing.Union">Union</span>[int, float]]]]</code>
+                <code>int | float | list[int | float] | None</code>
           </td>
           <td><p>The width of columns expressed as a ratio. Columns fill the available width
 in proportion of their specified column widths.</p></td>
@@ -668,7 +668,7 @@ in proportion of their specified column widths.</p></td>
         <tr>
           <td><code>fig_size</code></td>
           <td>
-                <code><span title="typing.Optional">Optional</span>[<span title="typing.Tuple">Tuple</span>[int, int]]</code>
+                <code>tuple[int, int] | None</code>
           </td>
           <td><p>Tuple specifying the <code>width</code> and <code>height</code> of the figure.</p></td>
           <td>
