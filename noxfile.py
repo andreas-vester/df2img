@@ -11,7 +11,11 @@ nox.options.sessions = "pre-commit", "tests", "mypy"
 python_versions = ["3.8", "3.9", "3.10", "3.11"]
 
 
-def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> None:
+def install_with_constraints(
+    session: Session,
+    *args: str,
+    **kwargs: Any,  # noqa: ANN401
+) -> None:
     """
     Install packages constrained by Poetry's lock file.
 
@@ -61,20 +65,10 @@ def precommit(session: Session) -> None:
     ]
     install_with_constraints(
         session,
-        "autoflake",
         "black",
-        "flake8",
-        "flake8-annotations",
-        "flake8-bandit",
-        "flake8-bugbear",
-        "flake8-builtins",
-        "flake8-comprehensions",
-        "flake8-docstrings",
-        "flake8-eradicate",
-        "isort",
         "mypy",
-        "pep8-naming",
         "pre-commit",
+        "ruff",
     )
     session.run("pre-commit", *args)
 

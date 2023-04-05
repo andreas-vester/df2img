@@ -47,14 +47,14 @@ behavior to <info@df2img.dev>.
 [Documentation](https://df2img.dev).
 
 Before you ask a question, it is best to search for existing
-[Issues](https://github.com/andreas-vester/df2img/issues?q=is%3Aissue) that might help you.
+[issues](https://github.com/andreas-vester/df2img/issues?q=is%3Aissue) that might help you.
 In case you have found a suitable issue and still need clarification, you can write
 your question in this issue.
 
 If you then still feel the need to ask a question and need clarification, we recommend
 the following:
 
-- Open a new [Issue](https://github.com/andreas-vester/df2img//issues/new).
+- Open a new [issue](https://github.com/andreas-vester/df2img//issues/new).
 - Provide as much context as you can about what you're running into.
 - Provide project and platform versions (Python version etc.), depending on what seems
   relevant.
@@ -100,7 +100,8 @@ help us fix any potential bug as fast as possible.
 - Make sure that you are using the latest version.
 - Determine if your bug is really a bug and not an error on your side e.g. using
   incompatible environment components/versions (Make sure that you have read the
-  [documentation](https://df2img.dev). If you are looking for support, you might want to check [this section](#i-have-a-question)).
+  [documentation](https://df2img.dev). If you are looking for support, you might want to check
+  [this section](#i-have-a-question)).
 - To see if other users have experienced (and potentially already solved) the same
   issue you are having, check if there is not already a bug report existing for your
   bug or error in the [bug tracker](https://github.com/andreas-vester/df2img/issues?q=label%3Abug).
@@ -123,7 +124,7 @@ help us fix any potential bug as fast as possible.
 
 We use GitHub issues to track bugs and errors. If you run into an issue with the project:
 
-- Open an [Issue](https://github.com/andreas-vester/df2img//issues/new). (Since we can't be
+- Open an [issue](https://github.com/andreas-vester/df2img//issues/new). (Since we can't be
   sure at this point whether it is a bug or not, we ask you not to talk about a bug
   yet and not to label the issue.)
 - Explain the behavior you would expect and the actual behavior.
@@ -194,7 +195,8 @@ If you do so, reference it here in the description. -->
 
 ### Your First Code Contribution
 
-You can find a good [introduction](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) on how to contribute to an open source project. In a nutshell, the process involves the following steps:
+You can find a good [introduction](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) on
+how to contribute to an open source project. In a nutshell, the process involves the following steps:
 1. Fork (i.e. copy) the repository to your own GitHub account.
 2. Clone the fork to your local machine.
 3. Create a new branch to work on.
@@ -204,8 +206,9 @@ You can find a good [introduction](https://docs.github.com/en/get-started/quicks
 <!-- omit in toc -->
 #### How do I set up my dev environment?
 
-**df2img** uses [poetry](https://python-poetry.org/) to manage its dependencies. So make sure you have it properly installed before you go on.
-To set up your development environment, you should install the project after you cloned the repo to your local machine:
+**df2img** uses [poetry](https://python-poetry.org/) to manage its dependencies. So make sure you have it properly
+installed before you go on. To set up your development environment, you should install the project after you cloned
+the repo to your local machine:
 ```shell
 poetry install
 ```
@@ -225,32 +228,24 @@ have the chance to fix all issues and re-commit your code changes.
 In concrete, besides ``pre-commit``'s native checks, the following hooks have been
 implemented (in alphabetical order):
 
-* [autoflake](https://pypi.org/project/autoflake/): Removes unused imports and
-  unused variables from Python code.
 * [black](https://pypi.org/project/black/): The Uncompromising Code Formatter
-* [flake8](https://pypi.org/project/flake8/): Flake8 is a Python library that
-  wraps ``PyFlakes``, ``pycodestyle`` and Ned Batchelder's McCabe script. It is a
-  great toolkit for checking your code base against coding style (PEP8), programming
-  errors and to check cyclomatic complexity.
-* [flake8-annotations](https://pypi.org/project/flke8ake8-annotations/): Detects the
-  absence of PEP 3107-style function annotations and PEP 484-style type comments.
-* [flake8-bandit](https://pypi.org/project/flake8-bandit/): Automated security
-  testing.
-* [flake8-black](https://pypi.org/project/flake8-black/): Validating Python code
-  style with the command line code formatting tool black.
-* [flake8-bugbear](https://pypi.org/search/?q=flake8-bugbear): Finding likely
-  bugs and design problems in your program.
-* [flake8-builtins](https://pypi.org/project/flake8-builtins/): Check for python
-  builtins being used as variables or parameters.
-* [flake8-comprehensions](https://pypi.org/search/?q=flake8-comprehensions):
-  Helps you write better list/set/dict comprehensions.
-* [flake8-docstrings](https://pypi.org/project/flake8-docstrings/): Check docstrings.
-* [flake8-eradicate](https://pypi.org/project/flake8-eradicate/): Find commented
-  out (or so called "dead") code.
-* [isort](https://pypi.org/project/isort/): Sort imports alphabetically, and
-  automatically separated into sections and by type.
-* [pep8-naming](https://pypi.org/project/pep8-naming/): Check your code against
-  PEP 8 naming conventions.
+* [ruff](https://pypi.org/project/ruff/): An extremely fast Python linter, written in Rust, with the following options
+  enabled:
+
+    * Pyflakes
+    * Pycodestyle
+    * isort
+    * pep8-naming
+    * docstring
+    * pyupgrade
+    * flake8-annotations
+    * flake8-bugbear
+    * flake8-builtins
+    * flake8-comprehensions
+    * flake8-unused-arguments
+    * flake8-use-pathlib
+    * flake8-eradicate
+    * flake8-simplify
 
 You can install the hooks with (runs for each commit):
 
@@ -289,31 +284,38 @@ poetry run nox
 If all tests pass, you should get a result comparable to this:
 ```shell
 nox > Ran multiple sessions:
-nox > pre-commit: success
+nox > * pre-commit: success
 nox > * tests-3.8: success
 nox > * tests-3.9: success
 nox > * tests-3.10: success
 nox > * tests-3.11: success
+nox > * mypy-3.8: success
+nox > * mypy-3.9: success
+nox > * mypy-3.10: success
+nox > * mypy-3.11: success
 ```
 
 ### Improving The Documentation
 
-The documentation is completely written in _Markdown_. Utilizing the [mkdocs](https://www.mkdocs.org/) and [mkdocstrings](https://mkdocstrings.github.io/) libraries, the content will be generated automatically from the **docs** directory and from the docstrings of the public signatures of the source code.
+The documentation is completely written in _Markdown_. Utilizing the [mkdocs](https://www.mkdocs.org/) and
+[mkdocstrings](https://mkdocstrings.github.io/) libraries, the content will be generated automatically from the
+**docs** directory and from the docstrings of the public signatures of the source code.
 
-There is always room for improvement. So, if you feel something isn't as clear described as it should be, please don't hesitate to open an [Issue](https://github.com/andreas-vester/df2img/issues/new). Also, please attach the **documentation** label to it in order to make the maintainers' life a bit easier.
+There is always room for improvement. So, if you feel something isn't as clear described as it should be, please
+don't hesitate to open an [issue](https://github.com/andreas-vester/df2img/issues/new). Also, please attach the
+**documentation** label to it in order to make the maintainers' life a bit easier.
 
 ## Style guides
 
 ### Code formatting
 
-This project uses the [black](https://black.readthedocs.io/) formatter to
-automatically format the code basis. The line length has been set to 88 characters.
+This project uses the [black](https://black.readthedocs.io/) formatter to automatically format the code basis.
+The line length has been set to 88 characters.
 
 ### Linting
 
-We use [flake8](https://pypi.org/project/flake8/) as our tool of choice for style
-guide enforcement. That means, contributors should adhere to the following points
-(not exhaustive):
+We use [ruff](https://pypi.org/project/ruff/) as our tool of choice for style guide enforcement. That means,
+contributors should adhere to the following points (not exhaustive):
 
 - Every module must have a docstring to describe what the module is all about.
 - Every function signature should have type hints as well as return values.

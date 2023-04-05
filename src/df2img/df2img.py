@@ -1,26 +1,28 @@
 """Collection of functions to plot and save a `pd.DataFrame`."""
 
+from __future__ import annotations
+
 from math import floor
 from pathlib import Path
-from typing import Any, List, Optional, Tuple, Union
+from typing import Any
 
 import pandas as pd
 import plotly
 
 
 def plot_dataframe(
-    df: Union[pd.Series, pd.DataFrame],
+    df: pd.Series | pd.DataFrame,
     print_index: bool = True,
-    title: Optional[dict] = None,
+    title: dict | None = None,
     tbl_header_visible: bool = True,
-    tbl_header: Optional[dict] = None,
-    tbl_cells: Optional[dict] = None,
-    row_fill_color: Optional[Tuple[str, str]] = None,
-    col_width: Optional[Union[int, float, List[Union[int, float]]]] = None,
-    fig_size: Optional[Tuple[int, int]] = None,
+    tbl_header: dict | None = None,
+    tbl_cells: dict | None = None,
+    row_fill_color: tuple[str, str] | None = None,
+    col_width: int | float | list[int | float] | None = None,
+    fig_size: tuple[int, int] | None = None,
     show_fig: bool = True,
     plotly_renderer: str = "png",
-    **layout_kwargs: Any,
+    **layout_kwargs: Any,  # noqa: ANN401
 ) -> plotly.graph_objects.Figure:
     """
     Plot a pd.Series or pd.DataFrame.
@@ -102,7 +104,7 @@ def plot_dataframe(
 
     """
 
-    def _alternate_row_colors() -> Optional[List[str]]:
+    def _alternate_row_colors() -> list[str] | None:
         color_list = None
         # alternate row colors
         row_count = len(df)
@@ -113,13 +115,13 @@ def plot_dataframe(
             row_even_count = floor(row_count / 2)
             odd_list = [row_fill_color[0]] * row_odd_count
             even_list = [row_fill_color[1]] * row_even_count
-            color_list = [x for y in zip(odd_list, even_list) for x in y]
+            color_list = [x for y in zip(odd_list, even_list) for x in y]  # noqa: B905
             if row_odd_count > row_even_count:
                 color_list.append(row_fill_color[0])
 
         return color_list
 
-    def _tbl_values() -> Tuple[List[str], pd.Series]:
+    def _tbl_values() -> tuple[list[str], list[str]]:
         if print_index:
             header_values = [
                 "<b>" + x + "<b>"

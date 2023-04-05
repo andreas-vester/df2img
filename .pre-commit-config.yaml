@@ -17,24 +17,22 @@ repos:
       - id: mixed-line-ending
   - repo: local
     hooks:
-      - id: autoflake
-        name: autoflake
-        entry: poetry run autoflake -r -i --remove-all-unused-imports --remove-unused-variables
+      - id: kacl-verify
+        name: verify CHANGELOG.md
+        entry: kacl-cli verify
         language: system
+        files: CHANGELOG.md
+        pass_filenames: false
         types: [python]
-      - id: isort
-        name: isort
-        entry: poetry run isort
-        language: system
-        args: ["--profile", "black", "--filter-files"]
       - id: black
         name: black
-        entry: poetry run black
+        entry: black .
+        require_serial: true
         language: system
         types: [python]
-      - id: flake8
-        name: flake8
-        entry: poetry run flake8
+        pass_filenames: false
+      - id: ruff
+        name: ruff
+        entry: ruff .
         language: system
         types: [python]
-        args: ["--max-line-length=88"]

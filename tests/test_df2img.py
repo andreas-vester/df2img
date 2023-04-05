@@ -1,12 +1,13 @@
 """Test functions in df2img.py."""
 
+from __future__ import annotations
+
 from pathlib import Path
 
+import df2img
 import pandas as pd
 import plotly.graph_objects as go
 import pytest
-
-import df2img
 
 
 @pytest.fixture(scope="module")
