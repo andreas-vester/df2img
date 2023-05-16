@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.2.11] - 2023-05-16
+### Security
+- Updated dependencies.
+
 ## [0.2.10] - 2023-04-05
 ### Improved
 - Transitioned from [flake8](https://pypi.org/project/flake8/) to [ruff](https://pypi.org/project/ruff/).
@@ -125,7 +129,8 @@ For more information about ``plotly``'s renderers, visit the respective website 
 - Possibility to change column width and row height.
 - Possibility to change font size.
 
-[Unreleased]: https://github.com/andreas-vester/df2img/compare/v0.2.10...HEAD
+[Unreleased]: https://github.com/andreas-vester/df2img/compare/v0.2.11...HEAD
+[0.2.11]: https://github.com/andreas-vester/df2img/compare/v0.2.10...v0.2.11
 [0.2.10]: https://github.com/andreas-vester/df2img/compare/v0.2.9...v0.2.10
 [0.2.9]: https://github.com/andreas-vester/df2img/compare/0.2.8...0.2.9
 [0.2.8]: https://github.com/andreas-vester/df2img/compare/v0.2.7...v0.2.8
