@@ -1,4 +1,4 @@
-# Code of Conduct - pyratings
+# Code of Conduct - df2img
 
 ## Our Pledge
 
