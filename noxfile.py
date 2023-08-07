@@ -1,81 +1,36 @@
-"""Configuration file for `nox`."""
-
-import tempfile
-from typing import Any
+"""Nox sessions."""
+import os
 
 import nox
 from nox.sessions import Session
 
-locations = "src", "tests", "./noxfile.py"
-nox.options.sessions = "pre-commit", "tests", "mypy"
-python_versions = ["3.8", "3.9", "3.10", "3.11"]
+os.environ.update({"PDM_IGNORE_SAVED_PYTHON": "1"})
+nox.options.sessions = [
+    "pre-commit",
+    "tests",
+]
+PYTHON_VERSIONS = ["3.8", "3.9", "3.10", "3.11"]
 
 
-def install_with_constraints(
-    session: Session,
-    *args: str,
-    **kwargs: Any,  # noqa: ANN401
-) -> None:
-    """
-    Install packages constrained by Poetry's lock file.
-
-    This function is a wrapper for nox.sessions.Session.install. It invokes pip to
-    install packages inside the session's virtualenv.
-    Additionally, pip is passed a constraints file generated from Poetry's lock file,
-    to ensure that the packages are pinned to the versions specified in poetry.lock.
-    This allows you to manage the packages as Poetry development dependencies.
-
-    Parameters
-    ----------
-    session
-        The Session object.
-    args
-        Command-line arguments for pip.
-    kwargs
-        Additional keyword arguments for Session.install.
-
-    """
-    with tempfile.NamedTemporaryFile() as requirements:
-        session.run(
-            "poetry",
-            "export",
-            "--without-hashes",
-            "--format=requirements.txt",
-            f"--output={requirements.name}",
-            external=True,
-        )
-        session.install(f"--constraint={requirements.name}", *args, **kwargs)
-
-
-@nox.session(python=python_versions)
-def tests(session: Session) -> None:
-    """Run the test suite using pytest."""
-    args = session.posargs or ["--cov"]
-    session.run("poetry", "install", "--without", "docs,dev", external=True)
-    install_with_constraints(session, "coverage[toml]", "pytest", "pytest-cov")
-    session.run("pytest", *args)
-
-
-@nox.session(name="pre-commit", python=python_versions[-1])
+@nox.session(name="pre-commit", python="3.11")
 def precommit(session: Session) -> None:
     """Lint using pre-commit."""
     args = session.posargs or [
         "run",
         "--all-files",
+        "--hook-stage=manual",
     ]
-    install_with_constraints(
-        session,
-        "black",
-        "mypy",
-        "pre-commit",
-        "ruff",
-    )
+    session.run("pdm", "install", "-G", "lint", external=True)
+    session.run("pre-commit", "install")
     session.run("pre-commit", *args)
 
 
-@nox.session(python=python_versions)
-def mypy(session: Session) -> None:
-    """Type-check using mypy."""
-    args = session.posargs or locations
-    install_with_constraints(session, "mypy")
-    session.run("mypy", *args)
+@nox.session(name="tests", python=PYTHON_VERSIONS)
+def tests(session: Session) -> None:
+    """Run the test suite."""
+    args = session.posargs or ["--cov"]
+
+    # install the package itself into a new virtual environment with tests dependencies
+    session.run("pdm", "install", "-G", "test", external=True)
+    # run pytest against the installed package
+    session.run("pytest", *args)
