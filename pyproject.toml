@@ -16,7 +16,7 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 dependencies = [
-    "kaleido==0.2.1",
+    "kaleido==0.1.0post1",
     "pandas>=2.0.0,<3.0.0",
     "plotly>=5.3.1,<6.0.0",
     "ipython>=8.12.2",

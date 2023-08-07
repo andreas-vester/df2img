@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 - Replaced `poetry` with `pdm`.
 
+### Fixed
+- Issue with `kaleido` when using Windows that leads to a crash when using `df2img.save_dataframe` ([GH issue #58](https://github.com/andreas-vester/df2img/issues/58)).
+
 ## [0.2.11] - 2023-05-16
 ### Security
 - Updated dependencies.
