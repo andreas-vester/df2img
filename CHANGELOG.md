@@ -4,11 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.2.12] - 2023-08-07
 ### Changed
 - Replaced `poetry` with `pdm`.
 
 ### Fixed
 - Issue with `kaleido` when using Windows that leads to a crash when using `df2img.save_dataframe` ([GH issue #58](https://github.com/andreas-vester/df2img/issues/58)).
+
+### Security
+- Updated dependencies.
 
 ## [0.2.11] - 2023-05-16
 ### Security
@@ -134,7 +139,8 @@ For more information about ``plotly``'s renderers, visit the respective website 
 - Possibility to change column width and row height.
 - Possibility to change font size.
 
-[Unreleased]: https://github.com/andreas-vester/df2img/compare/v0.2.11...HEAD
+[Unreleased]: https://github.com/andreas-vester/df2img/compare/v0.2.12...HEAD
+[0.2.12]: https://github.com/andreas-vester/df2img/compare/v0.2.11...v0.2.12
 [0.2.11]: https://github.com/andreas-vester/df2img/compare/v0.2.10...v0.2.11
 [0.2.10]: https://github.com/andreas-vester/df2img/compare/v0.2.9...v0.2.10
 [0.2.9]: https://github.com/andreas-vester/df2img/compare/0.2.8...0.2.9

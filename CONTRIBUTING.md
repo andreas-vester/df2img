@@ -197,6 +197,7 @@ If you do so, reference it here in the description. -->
 
 You can find a good [introduction](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) on
 how to contribute to an open source project. In a nutshell, the process involves the following steps:
+
 1. Fork (i.e. copy) the repository to your own GitHub account.
 2. Clone the fork to your local machine.
 3. Create a new branch to work on.
@@ -206,11 +207,11 @@ how to contribute to an open source project. In a nutshell, the process involves
 <!-- omit in toc -->
 #### How do I set up my dev environment?
 
-**df2img** uses [poetry](https://python-poetry.org/) to manage its dependencies. So make sure you have it properly
+**df2img** uses [pdm](https://pdm.fming.dev/) to manage its dependencies. So make sure you have it properly
 installed before you go on. To set up your development environment, you should install the project after you cloned
 the repo to your local machine:
 ```shell
-poetry install
+pdm install -d
 ```
 
 The **df2img** package adheres to a bunch of [Style guides](#style-guides), that
@@ -271,7 +272,7 @@ pre-commit run --all-files
 
 Running simple unit tests using ``pytest`` is as easy as
 ```shell
-poetry run pytest
+pdm run pytest
 ```
 
 In addition, you can perform more rigorous linting and tests against multiple Python
@@ -279,7 +280,7 @@ versions. In this case, the test result depends on the Python versions available
 your machine. Make sure, you've got at least Python 3.8 installed on your machine.
 Then simply run:
 ```shell
-poetry run nox
+pdm run nox
 ```
 If all tests pass, you should get a result comparable to this:
 ```shell
@@ -289,10 +290,6 @@ nox > * tests-3.8: success
 nox > * tests-3.9: success
 nox > * tests-3.10: success
 nox > * tests-3.11: success
-nox > * mypy-3.8: success
-nox > * mypy-3.9: success
-nox > * mypy-3.10: success
-nox > * mypy-3.11: success
 ```
 
 ### Improving The Documentation
