@@ -323,7 +323,7 @@ contributors should adhere to the following points (not exhaustive):
 
 This project follows the [Conventional Commits](https://www.conventionalcommits.org/)
 specification. This will help us to automatically generate the
-[CHANGELOG](../CHANGELOG).
+[CHANGELOG](../changelog).
 
 ## Attribution
 This guide is based on the **contributing-gen**.
