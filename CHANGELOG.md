@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.2.13] - 2023-11-06
+### Changed
+- Python 3.8 no longer supported.
+- Updated dependencies.
+
 ## [0.2.12] - 2023-08-07
 ### Changed
 - Replaced `poetry` with `pdm`.
@@ -139,7 +144,8 @@ For more information about ``plotly``'s renderers, visit the respective website 
 - Possibility to change column width and row height.
 - Possibility to change font size.
 
-[Unreleased]: https://github.com/andreas-vester/df2img/compare/v0.2.12...HEAD
+[Unreleased]: https://github.com/andreas-vester/df2img/compare/v0.2.13...HEAD
+[0.2.13]: https://github.com/andreas-vester/df2img/compare/v0.2.12...v0.2.13
 [0.2.12]: https://github.com/andreas-vester/df2img/compare/v0.2.11...v0.2.12
 [0.2.11]: https://github.com/andreas-vester/df2img/compare/v0.2.10...v0.2.11
 [0.2.10]: https://github.com/andreas-vester/df2img/compare/v0.2.9...v0.2.10
