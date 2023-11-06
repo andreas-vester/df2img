@@ -1,11 +1,11 @@
 [project]
 name = "df2img"
-version = "0.2.12"
+version = "0.2.13"
 description = "Save a Pandas DataFrame as image"
 authors = [
     {name = "Andreas Vester", email = "info@df2img.dev"},
 ]
-requires-python = ">=3.8,<4.0"
+requires-python = ">=3.9,<4.0"
 readme = "README.md"
 license = {file = "LICENSE"}
 keywords = ["pandas", "dataframe", "image"]
@@ -16,9 +16,9 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 dependencies = [
-    "kaleido==0.1.0post1",
-    "pandas>=2.0.0,<3.0.0",
-    "plotly>=5.3.1,<6.0.0",
+    "kaleido==0.1.0.post1",
+    "pandas>=1.0.0,<3.0.0",
+    "plotly>=5.0.0,<6.0.0",
     "ipython>=8.12.2",
     "nbformat>=5.9.2",
 ]
