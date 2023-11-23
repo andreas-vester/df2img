@@ -9,9 +9,6 @@ from typing import Any
 import pandas as pd
 import plotly
 
-# The following command solves a potential issue with saving the image. Compare
-plotly.io.kaleido.scope.mathjax = None
-
 
 def plot_dataframe(
     df: pd.Series | pd.DataFrame,

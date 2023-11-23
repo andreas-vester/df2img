@@ -1,6 +1,6 @@
 [project]
 name = "df2img"
-version = "0.2.14"
+version = "0.2.15"
 description = "Save a Pandas DataFrame as image"
 authors = [
     {name = "Andreas Vester", email = "info@df2img.dev"},
@@ -16,7 +16,8 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 dependencies = [
-    "kaleido==0.0.3",
+    "kaleido==0.1.0post1; platform_system=='Windows'",
+    "kaleido==0.0.3; platform_system!='Windows'",
     "pandas>=1.0.0,<3.0.0",
     "plotly>=5.0.0,<6.0.0",
     "ipython>=8.12.2",
@@ -33,7 +34,7 @@ documentation = "https://df2img.dev"
 [tool.pdm.dev-dependencies]
 docs = [
     "mkdocs-jupyter>=0.22.0",
-    "mkdocs-material>=8.5.3",
+    "mkdocs-material>=9.0.0",
     "mkdocstrings[python]>=0.19.0",
 ]
 
