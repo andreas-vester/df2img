@@ -1,6 +1,6 @@
 [project]
 name = "df2img"
-version = "0.2.15"
+version = "0.2.16"
 description = "Save a Pandas DataFrame as image"
 authors = [
     {name = "Andreas Vester", email = "info@df2img.dev"},
@@ -16,8 +16,7 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 dependencies = [
-    "kaleido==0.1.0post1; platform_system=='Windows'",
-    "kaleido==0.0.3; platform_system!='Windows'",
+    "kaleido==0.0.3",
     "pandas>=1.0.0,<3.0.0",
     "plotly>=5.0.0,<6.0.0",
     "ipython>=8.12.2",

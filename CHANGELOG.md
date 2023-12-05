@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- kaleido won't install on Windows machines using pdm package manager ([GH issue #62](https://github.com/andreas-vester/df2img/issues/62)).
 
 ## [0.2.15] - 2023-11-23
 ### Changed
