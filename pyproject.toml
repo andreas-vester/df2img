@@ -1,6 +1,6 @@
 [project]
 name = "df2img"
-version = "0.2.17"
+version = "0.2.18"
 description = "Save a Pandas DataFrame as image"
 authors = [
     {name = "Andreas Vester", email = "info@df2img.dev"},
@@ -170,5 +170,5 @@ follow_imports = "skip"
 includes = ["CHANGELOG.md", "LICENSE", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md"]
 
 [build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
