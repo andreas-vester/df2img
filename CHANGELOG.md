@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.2.18] - 2023-12-07
 ### Changed
 - Changed build-backend to flit.
 
@@ -162,7 +164,8 @@ For more information about ``plotly``'s renderers, visit the respective website 
 - Possibility to change column width and row height.
 - Possibility to change font size.
 
-[Unreleased]: https://github.com/andreas-vester/df2img/compare/v0.2.17...HEAD
+[Unreleased]: https://github.com/andreas-vester/df2img/compare/v0.2.18...HEAD
+[0.2.18]: https://github.com/andreas-vester/df2img/compare/v0.2.17...v0.2.18
 [0.2.17]: https://github.com/andreas-vester/df2img/compare/v0.2.16...v0.2.17
 [0.2.16]: https://github.com/andreas-vester/df2img/compare/v0.2.15...v0.2.16
 [0.2.15]: https://github.com/andreas-vester/df2img/compare/v0.2.14...v0.2.15
