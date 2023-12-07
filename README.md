@@ -28,16 +28,6 @@ It is a wrapper/convenience function in order to create a ``plotly`` Table. That
 
 An extensive documentation is available at https://df2img.dev.
 
-
-## Important note
-The ``kaleido`` dependency is needed to save a ``pd.DataFrame``. Right now there is an
-issue when using the latest version of ``kaleido``.
-This project requires ``kaleido v0.0.3`` when you are installing ``df2img`` on a Linux
-machine. This version has been set as the minimum version in the ``pyproject.toml``
-file.
-However, when you're on a Windows machine, you can use ``kaleido v0.1.0.post1`` at a
-maximum. That is, it is recommended to manually upgrade to this version.
-
 ## Quickstart
 
 You can install the package via ``pip``.

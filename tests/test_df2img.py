@@ -45,11 +45,6 @@ def df_with_index_odd_row_count() -> pd.DataFrame:
     )
 
 
-def test_version() -> None:
-    """It checks the correct version number."""
-    assert df2img.__version__ == "0.2.12"
-
-
 # noinspection PyUnresolvedReferences
 def test_plot_dataframe_without_args(df_without_index: pd.DataFrame) -> None:
     """It plots a dataframe without providing any additional arguments."""
