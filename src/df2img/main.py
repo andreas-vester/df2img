@@ -153,9 +153,11 @@ def plot_dataframe(
         tbl_cells = {}
     tbl_cells.update(
         values=cell_vals,
-        fill_color=[row_color_list] * len(df)
-        if row_color_list
-        else tbl_cells.get("fill_color"),
+        fill_color=(
+            [row_color_list] * len(df)
+            if row_color_list
+            else tbl_cells.get("fill_color")
+        ),
     )
 
     fig = plotly.graph_objs.Figure(

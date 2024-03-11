@@ -1,4 +1,5 @@
 """Nox sessions."""
+
 import os
 
 import nox
@@ -9,7 +10,7 @@ nox.options.sessions = [
     "pre-commit",
     "tests",
 ]
-PYTHON_VERSIONS = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+PYTHON_VERSIONS = ["3.9", "3.10", "3.11", "3.12"]
 
 
 @nox.session(name="pre-commit", python=PYTHON_VERSIONS)
