@@ -18,33 +18,32 @@ classifiers = [
 dependencies = [
     "kaleido==0.0.3; platform_system=='Linux'",
     "kaleido==0.1.0post1; platform_system!='Linux'",
-    "pandas>=1.0.0,<3.0.0",
-    "plotly>=5.0.0,<6.0.0",
-    "ipython>=8.0.0",
-    "nbformat>=5.0.0",
+    "pandas<3.0.0",
+    "plotly",
+    "ipython",
+    "nbformat",
 ]
 
 [project.optional-dependencies]
 docs = [
-    "mkdocs-jupyter>=0.24.6",
-    "mkdocs-material>=9.5.13",
-    "mkdocstrings[python]>=0.24.1",
+    "mkdocs-jupyter",
+    "mkdocs-material",
+    "mkdocstrings[python]",
 ]
 
 lint = [
-    "black[jupyter]>=24.0.0",
-    "esbonio>=0.16.4",
-    "mypy>=1.0.0",
-    "pre-commit>=3.6.2",
-    "python-kacl>=0.4.6",
-    "ruff>=0.3.2",
+    "esbonio",
+    "mypy",
+    "pre-commit",
+    "python-kacl",
+    "ruff",
 ]
 
 test = [
-    "nox>=2024.3.2",
-    "pytest>=8.0.0",
-    "pytest-cov>=4.0.0",
-    "coverage[toml]>=7.4.3",
+    "nox",
+    "pytest",
+    "pytest-cov",
+    "coverage[toml]",
 ]
 
 [project.urls]
@@ -120,11 +119,6 @@ mccabe = ["max-complexity = 10"]
 pydocstyle = ["convention = 'numpy'"]  # Accepts: "google", "numpy", or "pep257"
 
 per-file-ignores = ["'__init__.py' = ['D104']"]
-
-[tool.black]
-target-version = ["py312"]
-include ='\.pyi?$'
-force-exclude = ".venv, .nox, docs"
 
 [tool.pytest.ini_options]
 minversion = "8.0"

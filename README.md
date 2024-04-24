@@ -36,13 +36,6 @@ You can install the package via ``pip``.
 pip install df2img
 ```
 
-Using ``poetry`` or ``pdm``?
-
-```bash
-poetry add df2img
-pdm add df2img
-```
-
 Let's create a simple ``pd.DataFrame`` with some dummy data:
 
 ```python

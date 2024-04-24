@@ -1,11 +1,8 @@
 """Nox sessions."""
 
-import os
-
 import nox
 from nox.sessions import Session
 
-os.environ.update({"PDM_IGNORE_SAVED_PYTHON": "1"})
 nox.options.sessions = [
     "pre-commit",
     "tests",
@@ -21,8 +18,9 @@ def precommit(session: Session) -> None:
         "--all-files",
         "--hook-stage=manual",
     ]
-    session.run_always("pdm", "install", "-G", "lint", external=True)
+    session.run_always("uv", "pip", "install", ".[lint]", external=True)
     session.run("pre-commit", "install")
+    session.run("pre-commit", "autoupdate")
     session.run("pre-commit", *args)
 
 
@@ -32,6 +30,6 @@ def tests(session: Session) -> None:
     args = session.posargs or ["--cov"]
 
     # install the package itself into a new virtual environment with tests dependencies
-    session.run_always("pdm", "install", "-G", "test", external=True)
+    session.run_always("uv", "pip", "install", ".[test]", external=True)
     # run pytest against the installed package
     session.run("pytest", *args)

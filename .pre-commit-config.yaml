@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.6.0
     hooks:
       - id: check-ast
       - id: check-added-large-files
@@ -24,15 +24,13 @@ repos:
         files: CHANGELOG.md
         pass_filenames: false
         types: [python]
-      - id: black
-        name: black
-        entry: black .
-        require_serial: true
+      - id: ruff_lint
+        name: ruff_lint
+        entry: ruff check .
         language: system
         types: [python]
-        pass_filenames: false
-      - id: ruff
-        name: ruff
-        entry: ruff .
+      - id: ruff_format
+        name: ruff_format
+        entry: ruff format .
         language: system
         types: [python]
