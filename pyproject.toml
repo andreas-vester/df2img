@@ -5,7 +5,7 @@ description = "Save a Pandas DataFrame as image"
 authors = [
     {name = "Andreas Vester", email = "info@df2img.dev"},
 ]
-requires-python = ">=3.9,<4.0"
+requires-python = ">=3.9"
 readme = "README.md"
 license = {file = "LICENSE"}
 keywords = ["pandas", "dataframe", "image"]
@@ -16,11 +16,34 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 dependencies = [
-    "kaleido==0.0.3",
-    "pandas>=1.0.0,<3.0.0",
-    "plotly>=5.0.0,<6.0.0",
-    "ipython>=8.12.2",
-    "nbformat>=5.9.2",
+    "kaleido==0.2.1; platform_system!='Windows'",
+    "kaleido==0.1.0post1; platform_system=='Windows'",
+    "pandas<3.0.0",
+    "plotly",
+    "ipython",
+    "nbformat",
+]
+
+[project.optional-dependencies]
+docs = [
+    "mkdocs-jupyter",
+    "mkdocs-material",
+    "mkdocstrings[python]",
+]
+
+lint = [
+    "esbonio",
+    "mypy",
+    "pre-commit",
+    "python-kacl",
+    "ruff",
+]
+
+test = [
+    "nox",
+    "pytest",
+    "pytest-cov",
+    "coverage[toml]",
 ]
 
 [project.urls]
@@ -28,30 +51,6 @@ BugTracker = "https://github.com/andreas-vester/df2img/issues?q=label%3Abug+"
 homepage = "https://df2img.dev"
 repository = "https://github.com/andreas-vester/df2img"
 documentation = "https://df2img.dev"
-
-[tool.pdm]
-[tool.pdm.dev-dependencies]
-docs = [
-    "mkdocs-jupyter>=0.22.0",
-    "mkdocs-material>=9.0.0",
-    "mkdocstrings[python]>=0.19.0",
-]
-
-lint = [
-    "black[jupyter]>=23.0.0",
-    "esbonio>=0.13.0",
-    "mypy>=1.0.0",
-    "pre-commit>=3.0.0",
-    "python-kacl>=0.3.4",
-    "ruff>=0.0.259",
-]
-
-test = [
-    "nox>=2022.8.7",
-    "pytest>=7.1.2",
-    "pytest-cov>=4.0.0",
-    "coverage[toml]>=6.4.4",
-]
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
@@ -70,43 +69,6 @@ exclude_lines = [
 ]
 
 [tool.ruff]
-select = [
-    "F",        # Pyflakes
-    "E", "W",   # Pycodestyle
-    "I",        # isort
-    "N",        # pep8-naming
-    "D",        # docstring
-    "UP",       # pyupgrade
-    "ANN",      # flake8-annotations
-    "B",        # flake8-bugbear
-    "A",        # flake8-builtins
-    "C40",      # flake8-comprehensions
-    "ARG",      # flake8-unused-arguments
-    "PTH",      # flake8-use-pathlib
-    "ERA",      # flake8-eradicate
-    "SIM",      # flake8-simplify
-]
-
-# Allow autofix for all enabled rules (when '--fix') is provided.
-fixable = [
-    "F",        # Pyflakes
-    "E", "W",   # Pycodestyle
-    "I",        # isort
-    "N",        # pep8-naming
-    "D",        # docstring
-    "UP",       # pyupgrade
-    "ANN",      # flake8-annotations
-    "B",        # flake8-bugbear
-    "A",        # flake8-builtins
-    "C40",      # flake8-comprehensions
-    "ARG",      # flake8-unused-arguments
-    "PTH",      # flake8-use-pathlib
-    "ERA",      # flake8-eradicate
-    "SIM",      # flake8-simplify
-]
-
-unfixable = []
-
 # Exclude a variety of commonly ignored directiories
 exclude = [
     ".eggs",
@@ -124,25 +86,42 @@ exclude = [
 
 # Same as Black
 line-length = 88
+indent-width = 4
 
-target-version = "py311"
+# Assume Python 3.12
+target-version = "py312"
 
-[tool.ruff.mccabe]
-max-complexity = 10
+[lint]
+select = [
+    "F",        # Pyflakes
+    "E", "W",   # Pycodestyle
+    "I",        # isort
+    "N",        # pep8-naming
+    "D",        # docstring
+    "UP",       # pyupgrade
+    "ANN",      # flake8-annotations
+    "B",        # flake8-bugbear
+    "A",        # flake8-builtins
+    "C40",      # flake8-comprehensions
+    "ARG",      # flake8-unused-arguments
+    "PTH",      # flake8-use-pathlib
+    "ERA",      # flake8-eradicate
+    "SIM",      # flake8-simplify
+]
+ignore = []
 
-[tool.ruff.pydocstyle]
-convention = "numpy"  # Accepts: "google", "numpy", or "pep257"
+# Allow autofix for all enabled rules (when '--fix') is provided.
+fixable = ["ALL"]
+unfixable = []
 
-[tool.ruff.per-file-ignores]
-"__init__.py" = ["D104"]
+mccabe = ["max-complexity = 10"]
 
-[tool.black]
-target-version = ["py311"]
-include ='\.pyi?$'
-force-exclude = ".venv, .nox, docs"
+pydocstyle = ["convention = 'numpy'"]  # Accepts: "google", "numpy", or "pep257"
+
+per-file-ignores = ["'__init__.py' = ['D104']"]
 
 [tool.pytest.ini_options]
-minversion = "7.0"
+minversion = "8.0"
 addopts = """\
     --cov df2img \
     --cov tests \
@@ -170,5 +149,5 @@ follow_imports = "skip"
 includes = ["CHANGELOG.md", "LICENSE", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md"]
 
 [build-system]
-requires = ["flit_core >=3.2,<4"]
-build-backend = "flit_core.buildapi"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
