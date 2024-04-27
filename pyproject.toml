@@ -16,8 +16,8 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 dependencies = [
-    "kaleido==0.0.3; platform_system=='Linux'",
-    "kaleido==0.1.0post1; platform_system!='Linux'",
+    "kaleido==0.2.1; platform_system!='Windows'",
+    "kaleido==0.1.0post1; platform_system=='Windows'",
     "pandas<3.0.0",
     "plotly",
     "ipython",
@@ -149,5 +149,5 @@ follow_imports = "skip"
 includes = ["CHANGELOG.md", "LICENSE", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md"]
 
 [build-system]
-requires = ["flit_core >=3.2,<4"]
-build-backend = "flit_core.buildapi"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
