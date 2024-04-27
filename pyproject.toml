@@ -1,6 +1,6 @@
 [project]
 name = "df2img"
-version = "0.2.18"
+version = "0.2.19"
 description = "Save a Pandas DataFrame as image"
 authors = [
     {name = "Andreas Vester", email = "info@df2img.dev"},
@@ -13,7 +13,12 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python",
     "Operating System :: OS Independent",
-    "Topic :: Software Development :: Libraries :: Python Modules"
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
     "kaleido==0.2.1; platform_system!='Windows'",

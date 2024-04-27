@@ -5,13 +5,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.2.19] - 2024-04-27
+### Fixed
+- kaleido version dependent on operating system [GH#66](https://github.com/andreas-vester/df2img/issues/66).
+
 ## [0.2.18] - 2023-12-07
 ### Changed
 - Changed build-backend to flit.
 
 ## [0.2.17] - 2023-12-07
 ### Fixed
-- ModuleNotFoundError ([GH issue #64](https://github.com/andreas-vester/df2img/issues/64)).
+- ModuleNotFoundError ([GH#64](https://github.com/andreas-vester/df2img/issues/64)).
 
 ## [0.2.16] - 2023-12-05
 ### Fixed
@@ -164,7 +168,8 @@ For more information about ``plotly``'s renderers, visit the respective website 
 - Possibility to change column width and row height.
 - Possibility to change font size.
 
-[Unreleased]: https://github.com/andreas-vester/df2img/compare/v0.2.18...HEAD
+[Unreleased]: https://github.com/andreas-vester/df2img/compare/v0.2.19...HEAD
+[0.2.19]: https://github.com/andreas-vester/df2img/compare/v0.2.18...v0.2.19
 [0.2.18]: https://github.com/andreas-vester/df2img/compare/v0.2.17...v0.2.18
 [0.2.17]: https://github.com/andreas-vester/df2img/compare/v0.2.16...v0.2.17
 [0.2.16]: https://github.com/andreas-vester/df2img/compare/v0.2.15...v0.2.16
