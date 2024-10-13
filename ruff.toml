@@ -1,0 +1,95 @@
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+target-version = "py312"
+
+[lint]
+select = ["ALL"]
+ignore = [
+    "COM812",   # checks for absence of trailing commas
+    "EXE002",   # The file is executable but no shebang is present
+    "EM101",    # checks for raw-string-in-exception while raising err msgs
+    "FIX002",   # checks for unresolved TO-DO statements
+    "INP001",   # implicit namespace package
+    "ISC001",   # checks for implicitly concatenated strings on a single line
+    "PD010",    # checks for .unstack or .pivot
+    "PD013",    # checks for .melt
+    "PLR0913",  # too many arguments in function definition
+    "S101",     # checks for ussage of assert
+    "SLF001",   # checks for private member access
+    "T201",     # checks for print statements
+    "TD002",    # checks for missing author in TO-DO statements
+    "TD003",    # checks for missing issue links
+    "TRY003",   # checks for long exception msgs not defined in exception class
+]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+[lint.pydocstyle]
+convention = "numpy"
+
+[lint.mccabe]
+max-complexity = 15
+
+[lint.per-file-ignores]
+"__init__.py" = ["D104"]
+
+[format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+# Enable auto-formatting of code examples in docstrings. Markdown,
+# reStructuredText code/literal blocks and doctests are all supported.
+#
+# This is currently disabled by default, but it is planned for this
+# to be opt-out in the future.
+docstring-code-format = true
+
+# Set the line length limit used when formatting code snippets in
+# docstrings.
+#
+# This only has an effect when the `docstring-code-format` setting is
+# enabled.
+docstring-code-line-length = "dynamic"

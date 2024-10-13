@@ -21,34 +21,28 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "kaleido==0.2.1; platform_system!='Windows'",
-    "kaleido==0.1.0post1; platform_system=='Windows'",
+    "kaleido==0.2.1; platform_system != 'Windows'",
+    "kaleido==0.1.0post1; platform_system == 'Windows'",
     "pandas<3.0.0",
     "plotly",
     "ipython",
     "nbformat",
 ]
 
-[project.optional-dependencies]
-docs = [
+[tool.uv]
+dev-dependencies = [
+    "coverage[toml]",
+    "esbonio",
     "mkdocs-jupyter",
     "mkdocs-material",
     "mkdocstrings[python]",
-]
-
-lint = [
-    "esbonio",
     "mypy",
-    "pre-commit",
-    "python-kacl",
-    "ruff",
-]
-
-test = [
     "nox",
+    "pre-commit",
     "pytest",
     "pytest-cov",
-    "coverage[toml]",
+    "python-kacl",
+    "ruff",
 ]
 
 [project.urls]
@@ -72,58 +66,6 @@ exclude_lines = [
     'if TYPE_CHECKING:',
     'pragma: no cover'
 ]
-
-[tool.ruff]
-# Exclude a variety of commonly ignored directiories
-exclude = [
-    ".eggs",
-    ".git",
-    ".mypy_cache",
-    ".nox",
-    "pants.d",
-    ".ruff_cache",
-    ".venv",
-    "__pypackages__",
-    "_build",
-    "dist",
-    "site",
-]
-
-# Same as Black
-line-length = 88
-indent-width = 4
-
-# Assume Python 3.12
-target-version = "py312"
-
-[lint]
-select = [
-    "F",        # Pyflakes
-    "E", "W",   # Pycodestyle
-    "I",        # isort
-    "N",        # pep8-naming
-    "D",        # docstring
-    "UP",       # pyupgrade
-    "ANN",      # flake8-annotations
-    "B",        # flake8-bugbear
-    "A",        # flake8-builtins
-    "C40",      # flake8-comprehensions
-    "ARG",      # flake8-unused-arguments
-    "PTH",      # flake8-use-pathlib
-    "ERA",      # flake8-eradicate
-    "SIM",      # flake8-simplify
-]
-ignore = []
-
-# Allow autofix for all enabled rules (when '--fix') is provided.
-fixable = ["ALL"]
-unfixable = []
-
-mccabe = ["max-complexity = 10"]
-
-pydocstyle = ["convention = 'numpy'"]  # Accepts: "google", "numpy", or "pep257"
-
-per-file-ignores = ["'__init__.py' = ['D104']"]
 
 [tool.pytest.ini_options]
 minversion = "8.0"
@@ -149,9 +91,6 @@ show_error_codes = true
 show_column_numbers = true
 show_error_context = true
 follow_imports = "skip"
-
-[tool.pdm.build]
-includes = ["CHANGELOG.md", "LICENSE", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md"]
 
 [build-system]
 requires = ["pdm-backend"]
