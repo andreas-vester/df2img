@@ -1,13 +1,12 @@
 """Test functions in df2img.py."""
 
-from __future__ import annotations
-
 from pathlib import Path
 
-import df2img
 import pandas as pd
 import plotly.graph_objects as go
 import pytest
+
+import df2img
 
 
 @pytest.fixture(scope="module")
@@ -52,7 +51,7 @@ def test_plot_dataframe_without_args(df_without_index: pd.DataFrame) -> None:
 
     assert isinstance(fig, go.Figure)
     assert fig.layout.title.__getattribute__("text") is None
-    assert fig.data[0].header.values == ("<b>float_col<b>", "<b>str_col<b>")
+    assert fig.data[0].header.values == ("<b>float_col<b>", "<b>str_col<b>")  # noqa: PD011
 
 
 # noinspection PyUnresolvedReferences
@@ -66,7 +65,7 @@ def test_plot_dataframe_without_args_print_index(
 
     assert isinstance(fig, go.Figure)
     assert fig.layout.title.__getattribute__("text") is None
-    assert fig.data[0].header.values == ("<b><b>", "<b>float_col<b>", "<b>str_col<b>")
+    assert fig.data[0].header.values == ("<b><b>", "<b>float_col<b>", "<b>str_col<b>")  # noqa: PD011
 
 
 def test_plot_dataframe_title_text(df_with_index_even_row_count: pd.DataFrame) -> None:
@@ -85,11 +84,14 @@ def test_plot_dataframe_title_text(df_with_index_even_row_count: pd.DataFrame) -
         show_fig=False,
     )
 
+    font_size = 20
+    horizontal_title_pos_from_left_edge = 0.1
+
     assert fig.layout.title.font.color == "red"
     assert fig.layout.title.font.family == "Arial"
-    assert fig.layout.title.font.size == 20
+    assert fig.layout.title.font.size == font_size
     assert fig.layout.title.text == "This is a title"
-    assert fig.layout.title.x == 0.1
+    assert fig.layout.title.x == horizontal_title_pos_from_left_edge
     assert fig.layout.title.xanchor == "right"
 
 
@@ -109,13 +111,17 @@ def test_plot_dataframe_header(df_with_index_even_row_count: pd.DataFrame) -> No
         show_fig=False,
     )
 
+    font_size = 14
+    height = 20
+    line_width = 2
+
     assert fig.data[0].header.align == "right"
     assert fig.data[0].header.fill.color == "blue"
     assert fig.data[0].header.font.color == "white"
     assert fig.data[0].header.font.family == "Arial"
-    assert fig.data[0].header.font.size == 14
-    assert fig.data[0].header.height == 20
-    assert fig.data[0].header.line.width == 2
+    assert fig.data[0].header.font.size == font_size
+    assert fig.data[0].header.height == height
+    assert fig.data[0].header.line.width == line_width
 
 
 def test_plot_dataframe_header_invisible(
@@ -160,13 +166,17 @@ def test_plot_dataframe_cells(df_with_index_even_row_count: pd.DataFrame) -> Non
         show_fig=False,
     )
 
+    font_size = 10
+    height = 30
+    line_width = 1.5
+
     assert fig.data[0].cells.align == "left"
     assert fig.data[0].cells.fill.color == "darkred"
     assert fig.data[0].cells.font.color == "lightblue"
     assert fig.data[0].cells.font.family == "Times New Roman"
-    assert fig.data[0].cells.font.size == 10
-    assert fig.data[0].cells.height == 30
-    assert fig.data[0].cells.line.width == 1.5
+    assert fig.data[0].cells.font.size == font_size
+    assert fig.data[0].cells.height == height
+    assert fig.data[0].cells.line.width == line_width
 
 
 def test_plot_dataframe_row_fill_color_even_row_count(
@@ -225,8 +235,11 @@ def test_plot_dataframe_fig_size(df_with_index_even_row_count: pd.DataFrame) -> 
         show_fig=False,
     )
 
-    assert fig.layout.width == 400
-    assert fig.layout.height == 200
+    width = 400
+    height = 200
+
+    assert fig.layout.width == width
+    assert fig.layout.height == height
 
 
 def test_plot_dataframe_paper_bgcolor_rgba(

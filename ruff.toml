@@ -45,6 +45,7 @@ ignore = [
     "ISC001",   # checks for implicitly concatenated strings on a single line
     "PD010",    # checks for .unstack or .pivot
     "PD013",    # checks for .melt
+    "PD901",    # checks for dataframes names 'df'
     "PLR0913",  # too many arguments in function definition
     "S101",     # checks for ussage of assert
     "SLF001",   # checks for private member access

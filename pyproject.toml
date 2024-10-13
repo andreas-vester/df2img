@@ -1,6 +1,6 @@
 [project]
 name = "df2img"
-version = "0.2.19"
+version = "0.2.20"
 description = "Save a Pandas DataFrame as image"
 authors = [
     {name = "Andreas Vester", email = "info@df2img.dev"},

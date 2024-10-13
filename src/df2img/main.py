@@ -1,7 +1,5 @@
 """Collection of functions to plot and save a `pd.DataFrame`."""
 
-from __future__ import annotations
-
 from math import floor
 from pathlib import Path
 from typing import Any
@@ -12,13 +10,14 @@ import plotly
 
 def plot_dataframe(
     df: pd.Series | pd.DataFrame,
+    *,
     print_index: bool = True,
     title: dict | None = None,
     tbl_header_visible: bool = True,
     tbl_header: dict | None = None,
     tbl_cells: dict | None = None,
     row_fill_color: tuple[str, str] | None = None,
-    col_width: int | float | list[int | float] | None = None,
+    col_width: float | list[int | float] | None = None,
     fig_size: tuple[int, int] | None = None,
     show_fig: bool = True,
     plotly_renderer: str = "png",
@@ -211,5 +210,3 @@ def save_dataframe(fig: plotly.graph_objects.Figure, filename: Path) -> None:
 
     """
     fig.write_image(filename)
-
-    return None
