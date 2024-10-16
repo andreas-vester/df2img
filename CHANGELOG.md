@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.2.20] - 2024-10-16
 ### Changed
 - Transition to `uv`.
 - Added more `ruff` rules.
@@ -171,7 +173,8 @@ For more information about ``plotly``'s renderers, visit the respective website 
 - Possibility to change column width and row height.
 - Possibility to change font size.
 
-[Unreleased]: https://github.com/andreas-vester/df2img/compare/v0.2.19...HEAD
+[Unreleased]: https://github.com/andreas-vester/df2img/compare/v0.2.20...HEAD
+[0.2.20]: https://github.com/andreas-vester/df2img/compare/v0.2.19...v0.2.20
 [0.2.19]: https://github.com/andreas-vester/df2img/compare/v0.2.18...v0.2.19
 [0.2.18]: https://github.com/andreas-vester/df2img/compare/v0.2.17...v0.2.18
 [0.2.17]: https://github.com/andreas-vester/df2img/compare/v0.2.16...v0.2.17
