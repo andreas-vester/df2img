@@ -207,11 +207,12 @@ how to contribute to an open source project. In a nutshell, the process involves
 <!-- omit in toc -->
 #### How do I set up my dev environment?
 
-**df2img** uses [pdm](https://pdm.fming.dev/) to manage its dependencies. So make sure you have it properly
+**df2img** uses [uv](https://docs.astral.sh/uv/) to manage its dependencies. So make sure
+you have it properly
 installed before you go on. To set up your development environment, you should install the project after you cloned
 the repo to your local machine:
 ```shell
-pdm install -d
+uv sync
 ```
 
 The **df2img** package adheres to a bunch of [Style guides](#style-guides), that
@@ -229,24 +230,9 @@ have the chance to fix all issues and re-commit your code changes.
 In concrete, besides ``pre-commit``'s native checks, the following hooks have been
 implemented (in alphabetical order):
 
-* [black](https://pypi.org/project/black/): The Uncompromising Code Formatter
-* [ruff](https://pypi.org/project/ruff/): An extremely fast Python linter, written in Rust, with the following options
-  enabled:
-
-    * Pyflakes
-    * Pycodestyle
-    * isort
-    * pep8-naming
-    * docstring
-    * pyupgrade
-    * flake8-annotations
-    * flake8-bugbear
-    * flake8-builtins
-    * flake8-comprehensions
-    * flake8-unused-arguments
-    * flake8-use-pathlib
-    * flake8-eradicate
-    * flake8-simplify
+* kacl-cli verify
+* ruff check .
+* ruff format .
 
 You can install the hooks with (runs for each commit):
 
@@ -272,24 +258,7 @@ pre-commit run --all-files
 
 Running simple unit tests using ``pytest`` is as easy as
 ```shell
-pdm run pytest
-```
-
-In addition, you can perform more rigorous linting and tests against multiple Python
-versions. In this case, the test result depends on the Python versions available on
-your machine. Make sure, you've got at least Python 3.8 installed on your machine.
-Then simply run:
-```shell
-pdm run nox
-```
-If all tests pass, you should get a result comparable to this:
-```shell
-nox > Ran multiple sessions:
-nox > * pre-commit: success
-nox > * tests-3.8: success
-nox > * tests-3.9: success
-nox > * tests-3.10: success
-nox > * tests-3.11: success
+uv run pytest
 ```
 
 ### Improving The Documentation
@@ -304,13 +273,7 @@ don't hesitate to open an [issue](https://github.com/andreas-vester/df2img/issue
 
 ## Style guides
 
-### Code formatting
-
-This project uses the [black](https://black.readthedocs.io/) formatter to automatically format the code basis.
-The line length has been set to 88 characters.
-
-### Linting
-
+### Code formatting and linting
 We use [ruff](https://pypi.org/project/ruff/) as our tool of choice for style guide enforcement. That means,
 contributors should adhere to the following points (not exhaustive):
 
