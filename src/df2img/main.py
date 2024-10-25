@@ -1,11 +1,16 @@
 """Collection of functions to plot and save a `pd.DataFrame`."""
 
-from math import floor
-from pathlib import Path
-from typing import Any
+from __future__ import annotations
 
-import pandas as pd
+from math import floor
+from typing import TYPE_CHECKING, Any
+
 import plotly
+
+if TYPE_CHECKING:
+    from pathlib import Path
+
+    import pandas as pd
 
 
 def plot_dataframe(
