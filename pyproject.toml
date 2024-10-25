@@ -1,6 +1,6 @@
 [project]
 name = "df2img"
-version = "0.2.20"
+version = "0.2.21"
 description = "Save a Pandas DataFrame as image"
 authors = [
     {name = "Andreas Vester", email = "info@df2img.dev"},
@@ -37,7 +37,6 @@ dev-dependencies = [
     "mkdocs-material",
     "mkdocstrings[python]",
     "mypy",
-    "nox",
     "pre-commit",
     "pytest",
     "pytest-cov",
